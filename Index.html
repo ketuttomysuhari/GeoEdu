@@ -10,6 +10,8 @@
             --secondary: #22a6b3;
             --bg: #f5f7fa;
             --text: #2d3436;
+            --exam-bg: #ffeaa7;
+            --exam-text: #d63031;
         }
         body { 
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
@@ -27,17 +29,26 @@
             border-radius: 12px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
         }
-        header { border-bottom: 3px solid var(--secondary); padding-bottom: 20px; margin-bottom: 30px; }
+        header { 
+            border-bottom: 3px solid var(--secondary); 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
+            text-align: center;
+        }
         h1 { color: var(--primary); margin: 0 0 10px 0; }
         .subtitle { color: #636e72; font-size: 1.1em; margin: 0; }
+        
         .modul-card { 
             border: 1px solid #eee; 
+            border-left: 5px solid var(--primary);
             border-radius: 8px; 
             padding: 20px; 
-            margin-bottom: 20px; 
+            margin-bottom: 25px; 
             background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
-        .modul-card h2 { color: var(--primary); margin-top: 0; font-size: 1.3em; }
+        .modul-card h2 { color: var(--primary); margin-top: 0; font-size: 1.3em; border-bottom: 1px dashed #ccc; padding-bottom: 10px;}
+        
         .materi-list { display: grid; gap: 10px; list-style: none; padding: 0; margin: 0; }
         .materi-list a { 
             display: flex; 
@@ -48,12 +59,37 @@
             text-decoration: none; 
             border-radius: 6px; 
             transition: all 0.3s ease; 
-            border-left: 4px solid var(--secondary);
         }
         .materi-list a:hover { 
             background: var(--secondary); 
             color: white; 
             transform: translateX(5px); 
+        }
+        .materi-list a span.pertemuan-badge {
+            background: var(--primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-right: 15px;
+            min-width: 100px;
+            text-align: center;
+        }
+        .materi-list a:hover span.pertemuan-badge {
+            background: white;
+            color: var(--secondary);
+        }
+
+        .exam-banner {
+            background: var(--exam-bg);
+            color: var(--exam-text);
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+            border-radius: 8px;
+            margin: 25px 0;
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -61,26 +97,58 @@
 
 <div class="container">
     <header>
-        <h1>Kerangka Kontrol Geodesi</h1>
+        <h1>Mata Kuliah: Kerangka Kontrol Geodesi</h1>
         <p class="subtitle">Pengampu: Dr. Ir. Ketut Tomy Suhari</p>
     </header>
 
     <div class="modul-card">
         <h2>Modul 1 — Fondasi Pengukuran Geodesi</h2>
         <ul class="materi-list">
-            <li><a href="pertemuan1.html">Pertemuan 1: Pendahuluan Kerangka Kontrol Geodesi</a></li>
-            <li><a href="#">Pertemuan 2: Sistem Referensi dan Datum (Segera Hadir)</a></li>
-            <li><a href="#">Pertemuan 3: Jenis Pengamatan Geodesi (Segera Hadir)</a></li>
+            <li><a href="pertemuan1.html"><span class="pertemuan-badge">Pertemuan 1</span> Pendahuluan Kerangka Kontrol Geodesi</a></li>
+            <li><a href="pertemuan2.html"><span class="pertemuan-badge">Pertemuan 2</span> Sistem Referensi dan Datum</a></li>
+            <li><a href="pertemuan3.html"><span class="pertemuan-badge">Pertemuan 3</span> Jenis Pengamatan Geodesi</a></li>
         </ul>
     </div>
 
     <div class="modul-card">
         <h2>Modul 2 — Statistik Geodesi</h2>
         <ul class="materi-list">
-            <li><a href="#">Pertemuan 4: Error dan Ketelitian (Segera Hadir)</a></li>
-            <li><a href="#">Pertemuan 5: Statistik Dasar (Segera Hadir)</a></li>
+            <li><a href="pertemuan4.html"><span class="pertemuan-badge">Pertemuan 4</span> Error dan Ketelitian</a></li>
+            <li><a href="pertemuan5.html"><span class="pertemuan-badge">Pertemuan 5</span> Statistik Dasar</a></li>
+            <li><a href="pertemuan6.html"><span class="pertemuan-badge">Pertemuan 6</span> Distribusi Normal</a></li>
+            <li><a href="pertemuan7.html"><span class="pertemuan-badge">Pertemuan 7</span> Uji Statistik</a></li>
         </ul>
     </div>
+
+    <div class="exam-banner">
+        UJIAN TENGAH SEMESTER (UTS)
+    </div>
+
+    <div class="modul-card">
+        <h2>Modul 3 — Adjustment (Perataan)</h2>
+        <ul class="materi-list">
+            <li><a href="pertemuan8.html"><span class="pertemuan-badge">Pertemuan 8</span> Konsep Perataan</a></li>
+            <li><a href="pertemuan9.html"><span class="pertemuan-badge">Pertemuan 9</span> Least Squares Method</a></li>
+            <li><a href="pertemuan10.html"><span class="pertemuan-badge">Pertemuan 10</span> Perataan Poligon</a></li>
+            <li><a href="pertemuan11.html"><span class="pertemuan-badge">Pertemuan 11</span> Jaringan Triangulasi dan Trilaterasi</a></li>
+            <li><a href="pertemuan12.html"><span class="pertemuan-badge">Pertemuan 12</span> Variance-Covariance Matrix</a></li>
+        </ul>
+    </div>
+
+    <div class="modul-card">
+        <h2>Modul 4 — Implementasi Modern</h2>
+        <ul class="materi-list">
+            <li><a href="pertemuan13.html"><span class="pertemuan-badge">Pertemuan 13</span> Jaringan GNSS (Static, RTK, CORS)</a></li>
+            <li><a href="pertemuan14.html"><span class="pertemuan-badge">Pertemuan 14</span> Jaringan Kontrol Konstruksi</a></li>
+            <li><a href="pertemuan15.html"><span class="pertemuan-badge">Pertemuan 15</span> Studi Kasus Indonesia</a></li>
+            <li><a href="pertemuan16.html"><span class="pertemuan-badge">Pertemuan 16</span> Review Materi (Persiapan UAS)</a></li>
+        </ul>
+    </div>
+
+    <div class="exam-banner">
+        UJIAN AKHIR SEMESTER (UAS)
+    </div>
+
 </div>
 
 </body>
