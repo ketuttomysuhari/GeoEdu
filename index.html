@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GeoEdu | Platform Pembelajaran Geomatika</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark geo-navbar sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-globe-asia-australia me-2"></i>GeoEdu</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="#courses">Mata Kuliah</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hero-section">
+  <div class="container py-5">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <span class="badge rounded-pill geo-badge mb-3">Web Pembelajaran Geospasial</span>
+        <h1 class="display-5 fw-bold text-white mb-3">Belajar Geomatika Lebih Interaktif Bersama GeoEdu</h1>
+        <p class="lead text-white-75 mb-4">GeoEdu menyediakan materi perkuliahan digital, 16 pertemuan terstruktur, dan tampilan slide interaktif berbasis HTML, CSS, JavaScript, dan Bootstrap.</p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="#courses" class="btn btn-light btn-lg px-4"><i class="bi bi-play-circle me-2"></i>Mulai Belajar</a>
+          <a href="#about" class="btn btn-outline-light btn-lg px-4">Lihat Fitur</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="hero-card shadow-lg">
+          <div class="hero-card-top"></div>
+          <div class="p-4">
+            <h5 class="fw-bold mb-3">Dashboard Pembelajaran</h5>
+            <div class="progress mb-3" role="progressbar"><div class="progress-bar" style="width: 75%">75%</div></div>
+            <div class="lesson-preview active"><i class="bi bi-check-circle-fill"></i> Kerangka Kontrol Geodesi</div>
+            <div class="lesson-preview"><i class="bi bi-map"></i> Sistem Referensi Koordinat</div>
+            <div class="lesson-preview"><i class="bi bi-easel"></i> Slide Interaktif</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="courses" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Daftar Mata Kuliah</h2>
+        <p class="text-muted">Pilih mata kuliah untuk melihat 16 pertemuan pembelajaran.</p>
+      </div>
+      <div class="row g-4" id="courseList"></div>
+    </div>
+  </section>
+
+  <section id="about" class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <h2 class="fw-bold">Fitur GeoEdu</h2>
+          <p class="text-muted">Dirancang agar dapat langsung dipublikasikan melalui GitHub Pages tanpa database dan tanpa backend.</p>
+        </div>
+        <div class="col-lg-6">
+          <div class="row g-3">
+            <div class="col-md-6"><div class="feature-box"><i class="bi bi-journal-text"></i><h6>16 Pertemuan</h6><p>Materi tersusun seperti RPS per semester.</p></div></div>
+            <div class="col-md-6"><div class="feature-box"><i class="bi bi-easel2"></i><h6>Slide Interaktif</h6><p>Tampilan pembelajaran menyerupai PPT.</p></div></div>
+            <div class="col-md-6"><div class="feature-box"><i class="bi bi-github"></i><h6>GitHub Ready</h6><p>Cukup upload file ke repository.</p></div></div>
+            <div class="col-md-6"><div class="feature-box"><i class="bi bi-phone"></i><h6>Responsive</h6><p>Nyaman di laptop, tablet, dan HP.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="py-4 text-center text-white geo-footer">
+  <div class="container small">© 2026 GeoEdu. Platform pembelajaran geospasial berbasis web statis.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
