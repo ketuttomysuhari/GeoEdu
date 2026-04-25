@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <title>Pertemuan 1 - KKG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/simple.min.css">
+    
+    <style>
+        .back-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: #22a6b3;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: sans-serif;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .reveal h1, .reveal h2, .reveal h3 { color: #1a5f7a; }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn">&larr; Kembali ke Menu</a>
+
+    <div class="reveal">
+        <div class="slides">
+            
+            <section>
+                <h2>Kerangka Kontrol Geodesi</h2>
+                <h3>Modul 1: Pendahuluan</h3>
+                <br>
+                <p><strong>Dr. Ir. Ketut Tomy Suhari</strong></p>
+                <p><small>Gunakan panah pada keyboard untuk navigasi slide</small></p>
+            </section>
+
+            <section>
+                <h3>Apa itu Control Network?</h3>
+                <p style="text-align: left; font-size: 0.9em;">
+                    Sekumpulan titik yang diketahui koordinatnya ($X, Y, Z$) dalam sistem referensi tertentu yang berfungsi sebagai kerangka acuan nasional maupun lokal.
+                </p>
+                <ul style="font-size: 0.8em; text-align: left;">
+                    <li>Mencegah akumulasi kesalahan (blunder/sistematik).</li>
+                    <li>Menjamin konsistensi spasial antar proyek.</li>
+                    <li>Menjadi titik ikat untuk pemetaan fotogrametri atau pemindaian LiDAR.</li>
+                </ul>
+            </section>
+            
+            <section>
+                <section>
+                    <h3>Horizontal vs Vertical Control</h3>
+                    <p style="font-size: 0.8em; color: gray;">(Tekan panah bawah untuk melihat detail)</p>
+                </section>
+                <section>
+                    <h4>Kontrol Horizontal</h4>
+                    <p style="font-size: 0.8em;">Mendefinisikan posisi di permukaan bumi.</p>
+                    <ul style="font-size: 0.8em;">
+                        <li>Sistem Geografis: Lintang ($\phi$) dan Bujur ($\lambda$).</li>
+                        <li>Sistem Proyeksi: UTM ($Northing, Easting$).</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Kontrol Vertikal</h4>
+                    <p style="font-size: 0.8em;">Mendefinisikan ketinggian titik dari bidang referensi tertentu.</p>
+                    <ul style="font-size: 0.8em;">
+                        <li>Tinggi Orthometrik ($H$): Mengacu pada Geoid (MSL).</li>
+                        <li>Tinggi Elipsoid ($h$): Mengacu pada model Elipsoid matematis.</li>
+                    </ul>
+                </section>
+            </section>
+
+            <section>
+                <h3>Contoh Persamaan Geodesi</h3>
+                <p style="font-size: 0.8em;">Hubungan tinggi orthometrik dan elipsoid dapat dirumuskan sebagai:</p>
+                <p>$$ h = H + N $$</p>
+                <p style="font-size: 0.8em; text-align: left;">
+                    Dimana:<br>
+                    $h$ = Tinggi Elipsoid<br>
+                    $H$ = Tinggi Orthometrik<br>
+                    $N$ = Undulasi Geoid
+                </p>
+            </section>
+
+            <section>
+                <h2>Terima Kasih</h2>
+                <p>Ada Pertanyaan?</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/math/math.min.js"></script>
+    
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            transition: 'slide',
+            
+            // Konfigurasi MathJax agar mengenali syntax $...$ dan $$...$$
+            math: {
+                mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+                config: 'TeX-AMS_HTML-full',
+                // Enable single dollar sign for inline math
+                TeX: { Macros: { RR: "{\\bf R}" } }
+            },
+            plugins: [ RevealMath ]
+        });
+    </script>
+</body>
+</html>
