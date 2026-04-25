@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Akademik - Dr. Ir. Ketut Tomy Suhari</title>
+    <style>
+        :root {
+            --primary: #1a5f7a;
+            --secondary: #22a6b3;
+            --bg: #f5f7fa;
+            --text: #2d3436;
+        }
+        body { 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 40px 20px; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+        }
+        header { border-bottom: 3px solid var(--secondary); padding-bottom: 20px; margin-bottom: 30px; }
+        h1 { color: var(--primary); margin: 0 0 10px 0; }
+        .subtitle { color: #636e72; font-size: 1.1em; margin: 0; }
+        .modul-card { 
+            border: 1px solid #eee; 
+            border-radius: 8px; 
+            padding: 20px; 
+            margin-bottom: 20px; 
+            background: #fff;
+        }
+        .modul-card h2 { color: var(--primary); margin-top: 0; font-size: 1.3em; }
+        .materi-list { display: grid; gap: 10px; list-style: none; padding: 0; margin: 0; }
+        .materi-list a { 
+            display: flex; 
+            align-items: center; 
+            padding: 12px 20px; 
+            background: var(--bg); 
+            color: var(--text); 
+            text-decoration: none; 
+            border-radius: 6px; 
+            transition: all 0.3s ease; 
+            border-left: 4px solid var(--secondary);
+        }
+        .materi-list a:hover { 
+            background: var(--secondary); 
+            color: white; 
+            transform: translateX(5px); 
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Kerangka Kontrol Geodesi</h1>
+        <p class="subtitle">Pengampu: Dr. Ir. Ketut Tomy Suhari</p>
+    </header>
+
+    <div class="modul-card">
+        <h2>Modul 1 — Fondasi Pengukuran Geodesi</h2>
+        <ul class="materi-list">
+            <li><a href="pertemuan1.html">Pertemuan 1: Pendahuluan Kerangka Kontrol Geodesi</a></li>
+            <li><a href="#">Pertemuan 2: Sistem Referensi dan Datum (Segera Hadir)</a></li>
+            <li><a href="#">Pertemuan 3: Jenis Pengamatan Geodesi (Segera Hadir)</a></li>
+        </ul>
+    </div>
+
+    <div class="modul-card">
+        <h2>Modul 2 — Statistik Geodesi</h2>
+        <ul class="materi-list">
+            <li><a href="#">Pertemuan 4: Error dan Ketelitian (Segera Hadir)</a></li>
+            <li><a href="#">Pertemuan 5: Statistik Dasar (Segera Hadir)</a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
