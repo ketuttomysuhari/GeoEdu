@@ -2,12 +2,7 @@ let currentSlide = 0;
 
 function initLesson() {
   if (!window.slides || !Array.isArray(window.slides)) {
-    showLessonError("Variabel <b>window.slides</b> tidak ditemukan.");
-    return;
-  }
-
-  if (window.slides.length === 0) {
-    showLessonError("Slide kosong.");
+    showLessonError("window.slides tidak ditemukan.");
     return;
   }
 
@@ -16,16 +11,35 @@ function initLesson() {
 }
 
 function renderSlide() {
-  const content = document.getElementById("slideContent");
-  const counter = document.getElementById("slideCounter");
+  const slideContent = document.getElementById("slideContent");
+  const slideCounter = document.getElementById("slideCounter");
 
-  if (!content || !counter) return;
+  if (!slideContent) return;
 
-  content.innerHTML = window.slides[currentSlide].content;
-  counter.innerText = `${currentSlide + 1} / ${window.slides.length}`;
+  slideContent.innerHTML = window.slides[currentSlide].content;
+  slideCounter.innerText =
+    `${currentSlide + 1} / ${window.slides.length}`;
 
   renderThumbs();
+
+  /* render matematika */
   renderMath();
+}
+
+function renderMath() {
+  const target = document.getElementById("slideContent");
+
+  if (!window.MathJax) return;
+
+  if (MathJax.typesetClear) {
+    MathJax.typesetClear([target]);
+  }
+
+  if (MathJax.typesetPromise) {
+    MathJax.typesetPromise([target]).catch(err => {
+      console.log(err);
+    });
+  }
 }
 
 function renderThumbs() {
@@ -36,7 +50,10 @@ function renderThumbs() {
 
   window.slides.forEach((slide, index) => {
     const btn = document.createElement("button");
-    btn.className = `slide-thumb ${index === currentSlide ? "active" : ""}`;
+
+    btn.className =
+      "slide-thumb " +
+      (index === currentSlide ? "active" : "");
 
     btn.innerHTML = `
       <span>${index + 1}</span>
@@ -52,18 +69,7 @@ function renderThumbs() {
   });
 }
 
-function renderMath() {
-  const content = document.getElementById("slideContent");
-
-  if (window.MathJax && MathJax.typesetPromise) {
-    MathJax.typesetClear([content]);
-    MathJax.typesetPromise([content]);
-  }
-}
-
 function nextSlide() {
-  if (!window.slides) return;
-
   if (currentSlide < window.slides.length - 1) {
     currentSlide++;
     renderSlide();
@@ -71,8 +77,6 @@ function nextSlide() {
 }
 
 function prevSlide() {
-  if (!window.slides) return;
-
   if (currentSlide > 0) {
     currentSlide--;
     renderSlide();
@@ -91,21 +95,16 @@ function downloadPDF() {
   window.print();
 }
 
-function showLessonError(message) {
-  const content = document.getElementById("slideContent");
-
-  if (!content) return;
-
-  content.innerHTML = `
-    <div class="error-box">
-      <i class="bi bi-exclamation-triangle-fill"></i>
-      <h2>Materi Tidak Ditemukan</h2>
-      <p>${message}</p>
+function showLessonError(msg) {
+  document.getElementById("slideContent").innerHTML = `
+    <div class="text-center py-5">
+      <h2>Error</h2>
+      <p>${msg}</p>
     </div>
   `;
 }
 
-document.addEventListener("keydown", function (e) {
-  if (e.key === "ArrowRight") nextSlide();
-  if (e.key === "ArrowLeft") prevSlide();
+document.addEventListener("keydown", function(e){
+  if(e.key==="ArrowRight") nextSlide();
+  if(e.key==="ArrowLeft") prevSlide();
 });
