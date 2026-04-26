@@ -8,7 +8,7 @@ const slides = [
         <h3>Adjustment / Perataan Pengukuran</h3>
         <p class="lead mt-4">Disusun untuk Mata Kuliah Geodesi / Survei Teknik</p>
         <div class="lecturer-box mt-5">
-          Dr. Ir. Ketut Tomy Suhari, S.T., M.T., IPP
+          Dr. Ir. Ketut Tomy Suhari, S.T., M.T., IRSurv.
         </div>
       </div>
     `
