@@ -1,269 +1,564 @@
-.slide-body {
-  min-height: 100vh;
+/* =========================================================
+   GEOEDU FULL MODERN STYLE.CSS
+   Modern UI from Index -> Course -> Lesson Slides
+========================================================= */
+
+/* ---------- ROOT ---------- */
+:root{
+  --primary:#2563eb;
+  --primary2:#1d4ed8;
+  --dark:#0f172a;
+  --dark2:#111827;
+  --light:#f8fafc;
+  --muted:#94a3b8;
+  --white:#ffffff;
+  --success:#16a34a;
+  --warning:#f59e0b;
+  --danger:#ef4444;
+
+  --radius:18px;
+  --shadow:
+    0 10px 30px rgba(0,0,0,.12);
+
+  --glass:
+    rgba(255,255,255,.08);
+}
+
+/* ---------- RESET ---------- */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+
   background:
-    radial-gradient(circle at top left, rgba(0, 212, 255, 0.18), transparent 30%),
-    linear-gradient(135deg, #061225 0%, #073b7a 45%, #0b7285 100%);
-  color: #fff;
-  overflow-x: hidden;
+    linear-gradient(135deg,#e0f2fe,#f8fafc);
+
+  color:#0f172a;
 }
 
-.geo-navbar {
-  background: rgba(3, 19, 43, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-}
-
-.slide-wrapper {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 24px;
-  padding: 24px;
-  min-height: calc(100vh - 58px);
-}
-
-.slide-sidebar {
-  background: rgba(255,255,255,0.92);
-  border-radius: 24px;
-  padding: 20px;
-  color: #0f1f33;
-  max-height: calc(100vh - 110px);
-  overflow-y: auto;
-}
-
-.slide-thumb {
-  width: 100%;
-  border: 0;
-  background: #f3f7fb;
-  border-radius: 14px;
-  padding: 12px;
-  margin-bottom: 10px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  text-align: left;
-  transition: 0.2s;
-}
-
-.slide-thumb span {
-  background: #0d6efd;
-  color: #fff;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-
-.slide-thumb p {
-  margin: 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.slide-thumb.active,
-.slide-thumb:hover {
-  background: #dbeafe;
-  transform: translateX(4px);
-}
-
-.slide-stage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.slide-card {
-  position: relative;
-  width: min(1120px, 100%);
-  min-height: 650px;
-  background: rgba(255,255,255,0.96);
-  color: #102033;
-  border-radius: 30px;
-  padding: 46px;
-  overflow: hidden;
-}
-
-.slide-number {
-  position: absolute;
-  top: 18px;
-  right: 24px;
-  background: #0d6efd;
-  color: #fff;
-  padding: 7px 14px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.slide-controls {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.cover-slide {
-  min-height: 560px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* =========================================================
+   NAVBAR
+========================================================= */
+.geo-navbar{
   background:
-    linear-gradient(135deg, rgba(13,110,253,.9), rgba(13,202,240,.76)),
-    url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1600&auto=format&fit=crop");
-  background-size: cover;
-  background-position: center;
-  margin: -46px;
-  padding: 70px;
-  color: #fff;
+    linear-gradient(135deg,var(--primary),var(--primary2));
+
+  min-height:72px;
+  box-shadow:0 8px 20px rgba(37,99,235,.25);
 }
 
-.cover-slide h1 {
-  font-weight: 900;
-  font-size: clamp(2.3rem, 5vw, 4.5rem);
+.geo-navbar .navbar-brand{
+  font-size:1.35rem;
+  letter-spacing:.4px;
 }
 
-.cover-slide h3 {
-  font-weight: 700;
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
+.geo-navbar .btn{
+  border-radius:12px;
+  font-weight:600;
 }
 
-.lecturer-box {
-  background: rgba(255,255,255,0.18);
-  border: 1px solid rgba(255,255,255,0.25);
-  backdrop-filter: blur(8px);
-  padding: 16px 22px;
-  border-radius: 999px;
-  width: fit-content;
-  font-weight: 600;
+/* =========================================================
+   INDEX PAGE
+========================================================= */
+.hero-section{
+  padding:80px 0;
 }
 
-.slide-card h2 {
-  color: #073b7a;
-  font-weight: 850;
-  margin-bottom: 18px;
+.hero-title{
+  font-size:3rem;
+  font-weight:800;
+  line-height:1.15;
 }
 
-.slide-card h4 {
-  color: #0d6efd;
-  font-weight: 750;
-  margin-bottom: 16px;
+.hero-subtitle{
+  font-size:1.15rem;
+  color:#475569;
+  margin-top:15px;
 }
 
-.info-box {
-  background: #f6faff;
-  border: 1px solid #dcecff;
-  border-radius: 20px;
-  padding: 20px;
+.hero-box{
+  background:#fff;
+  border-radius:28px;
+  padding:40px;
+  box-shadow:var(--shadow);
 }
 
-.info-box h5 {
-  color: #073b7a;
-  font-weight: 800;
+/* course cards */
+.course-card{
+  background:#fff;
+  border:none;
+  border-radius:22px;
+  padding:28px;
+  transition:.25s ease;
+  box-shadow:var(--shadow);
+  height:100%;
 }
 
-.example-box {
-  background: #ecfeff;
-  border-left: 6px solid #06b6d4;
-  border-radius: 18px;
-  padding: 18px 20px;
+.course-card:hover{
+  transform:translateY(-8px);
+  box-shadow:
+    0 18px 40px rgba(37,99,235,.15);
 }
 
-.note-box {
-  background: #fff7e6;
-  border-left: 6px solid #ffc107;
-  border-radius: 18px;
-  padding: 18px 20px;
+.course-card h4{
+  font-weight:800;
+  margin-bottom:10px;
 }
 
-.math-box {
-  background: #07111f;
-  color: #fff;
-  border-left: 6px solid #ffc107;
-  border-radius: 18px;
-  padding: 18px 22px;
-  margin: 16px 0;
-  overflow-x: auto;
+.course-card p{
+  color:#64748b;
+  min-height:70px;
 }
 
-.small-math {
-  font-size: 0.88rem;
+.course-card .btn{
+  border-radius:12px;
+  font-weight:700;
 }
 
-.result-box {
-  background: #07111f;
-  color: white;
-  border-radius: 16px;
-  padding: 18px 20px;
+/* =========================================================
+   COURSE PAGE
+========================================================= */
+.course-header{
+  background:#fff;
+  border-radius:24px;
+  padding:32px;
+  box-shadow:var(--shadow);
+  margin-bottom:28px;
 }
 
-.quote-slide {
-  min-height: 530px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+.course-header h1{
+  font-weight:800;
 }
 
-.quote-slide h2 {
-  font-size: clamp(2rem, 4vw, 4rem);
-  color: #073b7a;
+.meeting-btn{
+  display:block;
+  background:#fff;
+  text-decoration:none;
+  color:#0f172a;
+  border-radius:18px;
+  padding:22px;
+  text-align:center;
+  font-weight:700;
+  transition:.22s;
+  box-shadow:var(--shadow);
 }
 
-.quote-slide p {
-  font-size: 1.25rem;
-  color: #53606f;
+.meeting-btn:hover{
+  transform:translateY(-5px);
+  background:linear-gradient(135deg,#dbeafe,#eff6ff);
+  color:var(--primary);
 }
 
-@media (max-width: 991px) {
-  .slide-wrapper {
-    grid-template-columns: 1fr;
-    padding: 16px;
-  }
-
-  .slide-card {
-    min-height: auto;
-    padding: 28px;
-  }
-
-  .cover-slide {
-    margin: -28px;
-    padding: 42px;
-  }
+/* =========================================================
+   LESSON / SLIDE MODE
+========================================================= */
+.slide-body{
+  margin:0;
+  background:
+    radial-gradient(circle at top left,#1e3a8a,#0f172a 55%);
+  min-height:100vh;
+  color:#fff;
 }
 
-/* PDF / Print Mode */
-@media print {
-  body {
-    background: #fff !important;
+/* main wrapper */
+.slide-wrapper{
+  display:flex;
+  gap:24px;
+  padding:24px;
+  min-height:calc(100vh - 72px);
+}
+
+/* sidebar */
+.slide-sidebar{
+  width:290px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:22px;
+  padding:20px;
+  backdrop-filter:blur(12px);
+  overflow-y:auto;
+}
+
+.slide-sidebar h6{
+  color:#cbd5e1;
+  margin-bottom:18px;
+  font-weight:700;
+}
+
+/* thumbs */
+.slide-thumb{
+  width:100%;
+  text-align:left;
+  border:none;
+  background:rgba(255,255,255,.05);
+  color:#fff;
+  border-radius:16px;
+  padding:14px 14px;
+  margin-bottom:12px;
+  transition:.2s;
+}
+
+.slide-thumb span{
+  font-size:.8rem;
+  opacity:.7;
+  display:block;
+}
+
+.slide-thumb p{
+  margin:4px 0 0;
+  font-size:.95rem;
+  font-weight:600;
+}
+
+.slide-thumb:hover{
+  background:rgba(255,255,255,.12);
+}
+
+.slide-thumb.active{
+  background:
+    linear-gradient(135deg,#3b82f6,#2563eb);
+}
+
+/* stage */
+.slide-stage{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
+/* slide card */
+.slide-card{
+  flex:1;
+  background:
+    linear-gradient(145deg,
+    rgba(255,255,255,.10),
+    rgba(255,255,255,.05));
+
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:28px;
+  padding:40px;
+  backdrop-filter:blur(16px);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.22);
+
+  overflow:auto;
+  position:relative;
+}
+
+/* slide counter */
+.slide-number{
+  position:absolute;
+  top:18px;
+  right:24px;
+  background:rgba(255,255,255,.10);
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:.85rem;
+  font-weight:700;
+  color:#e2e8f0;
+}
+
+/* controls */
+.slide-controls{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  margin-top:18px;
+}
+
+.slide-controls .btn{
+  border-radius:14px;
+  font-weight:700;
+  min-width:180px;
+}
+
+/* =========================================================
+   TYPOGRAPHY SLIDES
+========================================================= */
+.slide-card h1{
+  font-size:3rem;
+  font-weight:900;
+}
+
+.slide-card h2{
+  font-size:2rem;
+  font-weight:800;
+  margin-bottom:16px;
+}
+
+.slide-card h3{
+  font-size:1.45rem;
+  font-weight:700;
+  color:#dbeafe;
+}
+
+.slide-card h4{
+  font-size:1.2rem;
+  font-weight:700;
+  color:#bfdbfe;
+  margin-bottom:16px;
+}
+
+.slide-card h5{
+  font-size:1rem;
+  font-weight:700;
+}
+
+.slide-card p,
+.slide-card li{
+  font-size:1.05rem;
+  line-height:1.8;
+  color:#f8fafc;
+}
+
+.slide-card ul,
+.slide-card ol{
+  padding-left:20px;
+}
+
+/* =========================================================
+   COMPONENT BOXES
+========================================================= */
+.info-box,
+.note-box,
+.example-box,
+.result-box{
+  border-radius:20px;
+  padding:20px;
+  margin:18px 0;
+}
+
+.info-box{
+  background:rgba(59,130,246,.18);
+  border:1px solid rgba(147,197,253,.25);
+}
+
+.note-box{
+  background:rgba(245,158,11,.15);
+  border:1px solid rgba(245,158,11,.25);
+}
+
+.example-box{
+  background:rgba(16,185,129,.14);
+  border:1px solid rgba(16,185,129,.25);
+}
+
+.result-box{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+.table{
+  border-radius:18px;
+  overflow:hidden;
+  color:#fff;
+}
+
+.table thead{
+  background:rgba(255,255,255,.10);
+}
+
+.table td,
+.table th{
+  border-color:rgba(255,255,255,.08);
+  padding:14px;
+}
+
+/* =========================================================
+   FORM INPUT
+========================================================= */
+.form-control{
+  border-radius:14px;
+  border:none;
+  padding:14px;
+  font-size:1rem;
+}
+
+/* =========================================================
+   COVER SLIDE
+========================================================= */
+.cover-slide{
+  min-height:70vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.cover-slide h1{
+  font-size:3.4rem;
+  margin-bottom:12px;
+}
+
+.cover-slide h3{
+  font-size:1.7rem;
+}
+
+.lecturer-box{
+  background:rgba(255,255,255,.10);
+  padding:18px 24px;
+  border-radius:18px;
+  display:inline-block;
+  font-weight:700;
+  margin-top:20px;
+}
+
+/* quote */
+.quote-slide{
+  min-height:70vh;
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+}
+
+.quote-slide h2{
+  font-size:2.4rem;
+  line-height:1.5;
+}
+
+.quote-slide p{
+  margin-top:22px;
+  color:#cbd5e1;
+}
+
+/* =========================================================
+   MATH FORMULA
+========================================================= */
+.math-box{
+  background:
+    linear-gradient(135deg,
+    rgba(255,255,255,.08),
+    rgba(255,255,255,.04));
+
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:20px;
+  padding:24px;
+  margin:22px 0;
+  overflow-x:auto;
+  text-align:center;
+}
+
+/* mathjax container */
+mjx-container{
+  color:#ffffff !important;
+  font-size:125% !important;
+}
+
+/* svg formula */
+mjx-container svg{
+  fill:#ffffff !important;
+}
+
+/* =========================================================
+   PRINT / PDF
+========================================================= */
+@media print{
+
+  body{
+    background:#fff !important;
   }
 
   .geo-navbar,
   .slide-sidebar,
-  .slide-controls {
-    display: none !important;
+  .slide-controls,
+  .slide-number{
+    display:none !important;
   }
 
-  .slide-wrapper {
-    display: block;
-    padding: 0;
+  .slide-wrapper{
+    display:block;
+    padding:0;
   }
 
-  .slide-stage {
-    display: block;
+  .slide-card{
+    background:#fff !important;
+    color:#000 !important;
+    box-shadow:none !important;
+    border:none !important;
+    padding:30px !important;
   }
 
-  .slide-card {
-    box-shadow: none !important;
-    border-radius: 0;
-    width: 100%;
-    min-height: auto;
-    padding: 30px;
+  .slide-card *{
+    color:#000 !important;
   }
 
-  .slide-number {
-    display: none;
+  mjx-container svg{
+    fill:#000 !important;
   }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media(max-width:992px){
+
+  .slide-wrapper{
+    padding:14px;
+  }
+
+  .slide-card{
+    padding:24px;
+  }
+
+  .slide-card h1{
+    font-size:2rem;
+  }
+
+  .slide-card h2{
+    font-size:1.5rem;
+  }
+
+  .slide-card p,
+  .slide-card li{
+    font-size:1rem;
+  }
+
+  .slide-controls{
+    flex-direction:column;
+  }
+
+  .slide-controls .btn{
+    width:100%;
+  }
+
+}
+
+@media(max-width:576px){
+
+  .hero-title{
+    font-size:2rem;
+  }
+
+  .cover-slide h1{
+    font-size:2rem;
+  }
+
+  .cover-slide h3{
+    font-size:1.2rem;
+  }
+
+  .slide-card{
+    border-radius:20px;
+  }
+
 }
