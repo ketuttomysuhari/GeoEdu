@@ -1,0 +1,637 @@
+Berikut 1 file HTML lengkap. Simpan sebagai:
+
+lesson8.html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoEdu - Kerangka Kontrol Geodesi Pertemuan 8</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Reveal.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --secondary: #00a8cc;
+      --dark: #07111f;
+      --light: #f4f8fb;
+      --accent: #ffc857;
+    }
+    body {
+      margin: 0;
+      background: var(--dark);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+    .reveal {
+      background:
+        radial-gradient(circle at top left, rgba(0,168,204,.25), transparent 35%),
+        linear-gradient(135deg, #07111f 0%, #0b3d91 100%);
+      color: #fff;
+    }
+    .reveal .slides section {
+      text-align: left;
+      padding: 42px;
+      border-radius: 24px;
+    }
+    .slide-card {
+      background: rgba(255,255,255,0.92);
+      color: #102030;
+      border-radius: 28px;
+      padding: 44px;
+      box-shadow: 0 20px 55px rgba(0,0,0,.28);
+      min-height: 620px;
+      border: 1px solid rgba(255,255,255,.35);
+    }
+    .cover-card {
+      background:
+        linear-gradient(135deg, rgba(11,61,145,.92), rgba(0,168,204,.92)),
+        url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1600&auto=format&fit=crop");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      min-height: 680px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    h1, h2, h3 {
+      font-weight: 800 !important;
+      letter-spacing: -.5px;
+    }
+    h1 {
+      font-size: 3rem !important;
+    }
+    h2 {
+      color: var(--primary);
+      font-size: 2.1rem !important;
+      margin-bottom: 20px !important;
+    }
+    h3 {
+      color: #0b3d91;
+      font-size: 1.45rem !important;
+      margin-bottom: 18px !important;
+    }
+    .cover-card h1,
+    .cover-card h2,
+    .cover-card h3 {
+      color: #fff !important;
+    }
+    .subtitle {
+      font-size: 1.35rem;
+      color: #eaf7ff;
+      margin-top: 16px;
+    }
+    .lecturer {
+      margin-top: 36px;
+      font-size: 1.05rem;
+      background: rgba(255,255,255,.16);
+      padding: 14px 20px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+    .badge-geo {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .section-label {
+      color: var(--secondary);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: .85rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+    ul {
+      margin-top: 12px !important;
+    }
+    li {
+      margin-bottom: 9px;
+      font-size: 1.02rem;
+    }
+    .formula {
+      background: #07111f;
+      color: #fff;
+      border-left: 6px solid var(--accent);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin: 18px 0;
+      font-size: 1.25rem;
+      text-align: center;
+    }
+    .example-box {
+      background: #eef7fb;
+      border: 1px solid #d3e9f5;
+      border-radius: 18px;
+      padding: 18px 22px;
+      margin-top: 16px;
+    }
+    .note-box {
+      background: #fff8e5;
+      border-left: 6px solid var(--accent);
+      border-radius: 16px;
+      padding: 18px 22px;
+      margin-top: 16px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .mini-card {
+      background: #f7fbff;
+      border-radius: 18px;
+      padding: 20px;
+      border: 1px solid #dcecf5;
+      height: 100%;
+    }
+    .mini-card h4 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .quote {
+      font-size: 2.1rem;
+      line-height: 1.35;
+      text-align: center;
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: 160px;
+    }
+    .quote small {
+      display: block;
+      font-size: 1rem;
+      margin-top: 20px;
+      color: #607080;
+      font-weight: 500;
+    }
+    .topbar {
+      position: fixed;
+      top: 18px;
+      left: 24px;
+      z-index: 20;
+      background: rgba(255,255,255,.14);
+      backdrop-filter: blur(12px);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 700;
+    }
+    .calc-panel {
+      background: #f5fbff;
+      border-radius: 20px;
+      padding: 22px;
+      border: 1px solid #d4e8f5;
+      margin-top: 18px;
+    }
+    .calc-result {
+      background: #07111f;
+      color: white;
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 14px;
+      font-size: .95rem;
+    }
+    .reveal .controls {
+      color: #ffffff;
+    }
+    .reveal .progress {
+      color: var(--accent);
+      height: 7px;
+    }
+    @media (max-width: 768px) {
+      .slide-card {
+        padding: 26px;
+        min-height: auto;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 2rem !important;
+      }
+      h2 {
+        font-size: 1.55rem !important;
+      }
+      li {
+        font-size: .95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <i class="bi bi-globe-asia-australia"></i> GeoEdu | Pertemuan 8
+</div>
+<div class="reveal">
+  <div class="slides">
+    <!-- SLIDE 1 -->
+    <section>
+      <div class="slide-card cover-card">
+        <span class="badge bg-warning text-dark px-3 py-2 mb-4" style="width:max-content;">KERANGKA KONTROL GEODESI</span>
+        <h1>Pertemuan 8</h1>
+        <h2>Adjustment / Perataan Pengukuran</h2>
+        <p class="subtitle">Disusun untuk Mata Kuliah Geodesi / Survei Teknik</p>
+        <div class="lecturer">
+          Dr. Ir. Ketut Tomy Suhari, S.T., M.T., IPP
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 2 -->
+    <section>
+      <div class="slide-card">
+        <div class="section-label">I. Pendahuluan & Konsep Dasar</div>
+        <h2>1.1 Pengantar Kerangka Kontrol Geodesi</h2>
+        <div class="grid-2">
+          <div>
+            <h3>Definisi</h3>
+            <p>
+              Kerangka Kontrol Geodesi adalah jaringan titik-titik tetap yang koordinatnya diketahui secara teliti
+              dan menjadi referensi utama seluruh pekerjaan survei dan pemetaan.
+            </p>
+            <h3>Tujuan Pengukuran</h3>
+            <ul>
+              <li><b>Akurasi</b> = dekat dengan nilai sebenarnya</li>
+              <li><b>Presisi</b> = hasil konsisten berulang</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Fungsi KKG</h3>
+            <ul>
+              <li>Fondasi Sistem Informasi Geografis</li>
+              <li>Dasar pembangunan jalan, jembatan, gedung</li>
+              <li>Acuan batas bidang tanah / kadaster</li>
+              <li>Referensi deformasi dan monitoring</li>
+            </ul>
+            <div class="example-box">
+              <b>Contoh:</b><br>
+              Titik BM nasional digunakan sebagai referensi survei jalan tol.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 3 -->
+    <section>
+      <div class="slide-card">
+        <div class="section-label">I. Pendahuluan & Konsep Dasar</div>
+        <h2>1.2 Mengapa Perlu Perataan?</h2>
+        <p>Karena terdapat <b>redundansi pengukuran</b>. Misalnya titik A ke B diukur 3 kali:</p>
+        <div class="grid-2">
+          <div class="mini-card">
+            <h4>Data Pengukuran</h4>
+            <ul>
+              <li>100.024 m</li>
+              <li>100.019 m</li>
+              <li>100.027 m</li>
+            </ul>
+            <div class="formula">
+              \[
+              \bar{x}=\frac{100.024+100.019+100.027}{3}=100.0233 \, m
+              \]
+            </div>
+          </div>
+          <div class="mini-card">
+            <h4>Jenis Kesalahan</h4>
+            <ol>
+              <li><b>Blunder</b> → salah baca / salah catat</li>
+              <li><b>Sistematis</b> → koreksi suhu, atmosfer</li>
+              <li><b>Acak</b> → fluktuasi kecil</li>
+            </ol>
+            <h4>Tujuan Adjustment</h4>
+            <ul>
+              <li>Mendapat nilai terbaik</li>
+              <li>Mengurangi pengaruh error acak</li>
+              <li>Menentukan ketelitian hasil</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 4 -->
+    <section>
+      <div class="slide-card">
+        <div class="section-label">II. Teori Kesalahan dan Prinsip Perataan</div>
+        <h2>2.1 Distribusi Kesalahan</h2>
+        <p>Kesalahan acak dalam pengukuran geodesi umumnya diasumsikan mengikuti distribusi normal.</p>
+        <div class="formula">
+          \[
+          f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+          \]
+        </div>
+        <div class="grid-2">
+          <div class="mini-card">
+            <h4>Keterangan</h4>
+            <ul>
+              <li>\(\mu\) = nilai rata-rata</li>
+              <li>\(\sigma\) = simpangan baku</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <h4>Makna dalam Geodesi</h4>
+            <ul>
+              <li>Error kecil sering terjadi</li>
+              <li>Error besar jarang terjadi</li>
+              <li>Digunakan untuk analisis residual</li>
+              <li>Digunakan dalam uji statistik</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 5 -->
+    <section>
+      <div class="slide-card">
+        <div class="section-label">II. Teori Kesalahan dan Prinsip Perataan</div>
+        <h2>2.2 Metode Kuadrat Terkecil</h2>
+        <h3>Prinsip Utama</h3>
+        <div class="formula">
+          \[
+          \sum v_i^2 = minimum
+          \]
+        </div>
+        <p>
+          Artinya, nilai parameter dicari sehingga jumlah kuadrat selisih antara hasil pengamatan
+          dan nilai hasil hitungan menjadi sekecil mungkin.
+        </p>
+        <div class="example-box">
+          <b>Contoh:</b><br>
+          Jarak hasil ukur: 100.10 ; 100.00 ; 99.95
+          <br><br>
+          \[
+          x=\frac{100.10+100.00+99.95}{3}=100.0167
+          \]
+          Residual:
+          <ul>
+            <li>+0.0833</li>
+            <li>-0.0167</li>
+            <li>-0.0667</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 6 -->
+    <section>
+      <div class="slide-card">
+        <div class="section-label">III. Perataan Jaringan Kerangka Kontrol</div>
+        <h2>3.1 Model Parameter</h2>
+        <div class="formula">
+          \[
+          Ax = l + v
+          \]
+        </div>
+        <div class="grid-2">
+          <div class="mini-card">
+            <h4>Keterangan</h4>
+            <ul>
+              <li>\(A\) = matriks desain</li>
+              <li>\(x\) = parameter tak diketahui</li>
+              <li>\(l\) = observasi</li>
+              <li>\(v\) = residual</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <h4>Solusi Least Squares</h4>
+            <div class="formula">
+              \[
+              \hat{x}=(A^TPA)^{-1}A^TPl
+              \]
+            </div>
+            <p>\(P\) adalah matriks bobot pengamatan.</p>
+          </div>
+        </div>
+        <div class="note-box">
+          <b>Contoh:</b> Menentukan koordinat titik baru dari pengamatan sudut dan jarak.
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 7 -->
+    <section>
+      <div class="slide-card">
+        <div class="section-label">III. Perataan Jaringan Kerangka Kontrol</div>
+        <h2>3.2 Ketelitian dan Error Ellipse</h2>
+        <p>Koordinat hasil adjustment memiliki kovariansi:</p>
+        <div class="formula">
+          \[
+          \Sigma_x = \sigma_0^2(A^TPA)^{-1}
+          \]
+        </div>
+        <div class="grid-2">
+          <div class="mini-card">
+            <h4>Makna</h4>
+            <p>
+              Matriks kovariansi digunakan untuk mengetahui presisi koordinat titik hasil perataan.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h4>Error Ellipse</h4>
+            <ul>
+              <li>Sumbu mayor = 5 mm</li>
+              <li>Sumbu minor = 2 mm</li>
+              <li>Semakin kecil elips, semakin teliti posisi titik.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="note-box">
+          Error ellipse membantu menjelaskan ketidakpastian posisi dalam bentuk visual dua dimensi.
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 8 -->
+    <section>
+      <div class="slide-card">
+        <div class="section-label">IV. Aplikasi dan Studi Kasus</div>
+        <h2>4.1 Perataan GNSS Statik</h2>
+        <div class="grid-2">
+          <div>
+            <h3>Tahapan</h3>
+            <ol>
+              <li>Observasi GNSS 1–4 jam</li>
+              <li>Gunakan titik CORS referensi</li>
+              <li>Hitung baseline</li>
+              <li>Adjustment jaringan</li>
+            </ol>
+          </div>
+          <div class="example-box">
+            <b>Contoh Baseline:</b>
+            <ul>
+              <li>A-B = 1542.334 m</li>
+              <li>B-C = 2130.112 m</li>
+              <li>A-C = 3672.451 m</li>
+            </ul>
+            \[
+            1542.334 + 2130.112 = 3672.446
+            \]
+            \[
+            f = -0.005 \, m
+            \]
+            <b>Misclosure:</b> 5 mm diratakan ke seluruh jaringan.
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 9 -->
+    <section>
+      <div class="slide-card">
+        <div class="section-label">IV. Aplikasi dan Studi Kasus</div>
+        <h2>4.2 Perataan Jaring Kontrol Lokal</h2>
+        <div class="grid-2">
+          <div class="mini-card">
+            <h4>Integrasi Data</h4>
+            <ul>
+              <li>GNSS → koordinat global</li>
+              <li>Total Station → detail sudut/jarak</li>
+              <li>Waterpass → elevasi</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <h4>Contoh Poligon Tertutup</h4>
+            <ul>
+              <li>90°00’10”</li>
+              <li>89°59’55”</li>
+              <li>90°00’05”</li>
+              <li>90°00’08”</li>
+            </ul>
+          </div>
+        </div>
+        <div class="formula">
+          \[
+          \sum \beta = 360^\circ 00'18"
+          \]
+          \[
+          f = +18"
+          \]
+          \[
+          c = \frac{-18"}{4}=-4.5"
+          \]
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 10 -->
+    <section>
+      <div class="slide-card">
+        <div class="section-label">V. Penutup</div>
+        <h2>Kesimpulan</h2>
+        <ul>
+          <li>Kerangka Kontrol Geodesi adalah dasar seluruh survei presisi.</li>
+          <li>Semua pengukuran pasti mengandung error.</li>
+          <li>Adjustment diperlukan agar data konsisten.</li>
+          <li>Least Squares adalah metode utama geodesi modern.</li>
+          <li>Hasil akhir bukan hanya koordinat, tetapi juga ketelitiannya.</li>
+        </ul>
+        <div class="note-box">
+          <b>Diskusi:</b>
+          <ol>
+            <li>Mengapa GNSS statik lebih teliti dari RTK?</li>
+            <li>Bagaimana AI mendeteksi blunder otomatis?</li>
+            <li>Mengapa redundansi penting pada jaringan kontrol?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 11 -->
+    <section>
+      <div class="slide-card">
+        <div class="section-label">Bonus</div>
+        <h2>Contoh Soal Ujian</h2>
+        <p>Diketahui pengukuran jarak AB:</p>
+        <ul>
+          <li>25.124 m</li>
+          <li>25.118 m</li>
+          <li>25.121 m</li>
+        </ul>
+        <p>Hitung:</p>
+        <ol>
+          <li>Nilai terbaik</li>
+          <li>Residual tiap pengamatan</li>
+          <li>Standar deviasi</li>
+        </ol>
+        <div class="calc-panel">
+          <h4 class="fw-bold text-primary">Kalkulator Interaktif</h4>
+          <p class="mb-2">Masukkan 3 nilai pengukuran:</p>
+          <div class="row g-2">
+            <div class="col-md-4"><input id="n1" class="form-control" value="25.124"></div>
+            <div class="col-md-4"><input id="n2" class="form-control" value="25.118"></div>
+            <div class="col-md-4"><input id="n3" class="form-control" value="25.121"></div>
+          </div>
+          <button class="btn btn-primary mt-3" onclick="hitungResidual()">
+            <i class="bi bi-calculator"></i> Hitung
+          </button>
+          <div id="hasil" class="calc-result">
+            Klik tombol hitung untuk melihat hasil.
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 12 -->
+    <section>
+      <div class="slide-card">
+        <div class="section-label">Quote Penutup</div>
+        <div class="quote">
+          “No measurement is complete until its uncertainty is known.”
+          <small>Dalam geodesi, hasil ukur harus selalu disertai ketelitian.</small>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<!-- MathJax -->
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    controls: true,
+    progress: true,
+    center: true,
+    transition: 'slide',
+    backgroundTransition: 'fade',
+    width: 1280,
+    height: 720
+  });
+  function hitungResidual() {
+    const values = [
+      parseFloat(document.getElementById("n1").value),
+      parseFloat(document.getElementById("n2").value),
+      parseFloat(document.getElementById("n3").value)
+    ];
+    if (values.some(isNaN)) {
+      document.getElementById("hasil").innerHTML = "Input tidak valid.";
+      return;
+    }
+    const mean = values.reduce((a, b) => a + b, 0) / values.length;
+    const residuals = values.map(v => v - mean);
+    const variance =
+      residuals.reduce((sum, r) => sum + Math.pow(r, 2), 0) / (values.length - 1);
+    const stdDev = Math.sqrt(variance);
+    document.getElementById("hasil").innerHTML = `
+      <b>Nilai terbaik:</b> ${mean.toFixed(4)} m<br>
+      <b>Residual:</b><br>
+      v1 = ${residuals[0].toFixed(4)} m<br>
+      v2 = ${residuals[1].toFixed(4)} m<br>
+      v3 = ${residuals[2].toFixed(4)} m<br>
+      <b>Standar deviasi:</b> ${stdDev.toFixed(4)} m
+    `;
+  }
+</script>
+</body>
+</html>
