@@ -1,18 +1,269 @@
-:root{
-  --geo-primary:#0b5ed7;
-  --geo-secondary:#00a6a6;
-  --geo-dark:#062347;
-  --geo-soft:#eef7ff;
+.slide-body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(0, 212, 255, 0.18), transparent 30%),
+    linear-gradient(135deg, #061225 0%, #073b7a 45%, #0b7285 100%);
+  color: #fff;
+  overflow-x: hidden;
 }
-*{scroll-behavior:smooth}
-body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#172033}
-.geo-navbar{background:linear-gradient(135deg,#062347,#0b5ed7 55%,#00a6a6)}
-.hero-section{background:radial-gradient(circle at top right,rgba(0,166,166,.6),transparent 28%),linear-gradient(135deg,#062347,#0b5ed7);min-height:74vh;display:flex;align-items:center}
-.text-white-75{color:rgba(255,255,255,.78)}
-.geo-badge{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.35)}
-.hero-card{background:#fff;border-radius:28px;overflow:hidden;transform:rotate(1deg)}
-.hero-card-top{height:120px;background:linear-gradient(135deg,#0b5ed7,#00a6a6);position:relative}
-.hero-card-top:after{content:"";position:absolute;width:130px;height:130px;background:rgba(255,255,255,.18);border-radius:50%;right:30px;top:25px}
-.lesson-preview{padding:14px 16px;border-radius:14px;background:#f3f7fb;margin-bottom:10px;display:flex;gap:10px;align-items:center;font-weight:600}.lesson-preview.active{background:#e5f5ff;color:#0b5ed7}
-.course-card{border:0;border-radius:24px;overflow:hidden;transition:.25s;background:#fff}.course-card:hover{transform:translateY(-8px);box-shadow:0 18px 35px rgba(11,94,215,.16)!important}.course-icon{width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#0b5ed7,#00a6a6);display:grid;place-items:center;color:#fff;font-size:1.6rem}.course-meta{font-size:.9rem;color:#667085}.feature-box{height:100%;padding:24px;background:#fff;border-radius:22px;box-shadow:0 10px 24px rgba(0,0,0,.06)}.feature-box i{font-size:2rem;color:#0b5ed7}.feature-box h6{font-weight:800;margin-top:12px}.feature-box p{color:#667085;margin-bottom:0}.geo-footer{background:#062347}.course-header{background:linear-gradient(135deg,#062347,#0b5ed7,#00a6a6)}.lesson-card{border:0;border-radius:20px;transition:.2s}.lesson-card:hover{transform:translateY(-5px);box-shadow:0 15px 28px rgba(6,35,71,.12)}.meeting-pill{width:48px;height:48px;border-radius:16px;background:#eef7ff;color:#0b5ed7;font-weight:800;display:grid;place-items:center}
-.slide-body{background:#06172e;color:#fff;min-height:100vh;overflow:hidden}.slide-wrapper{display:grid;grid-template-columns:290px 1fr;height:calc(100vh - 56px)}.slide-sidebar{background:#fff;color:#172033;padding:22px;overflow:auto}.thumb-item{padding:12px 14px;border-radius:14px;margin-bottom:10px;cursor:pointer;background:#f4f7fb;border:1px solid transparent}.thumb-item.active{background:#e5f5ff;border-color:#0b5ed7;color:#0b5ed7;font-weight:700}.slide-stage{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;background:radial-gradient(circle at top right,rgba(0,166,166,.35),transparent 30%),#06172e}.slide-card{background:#fff;color:#172033;border-radius:28px;width:min(980px,94vw);min-height:560px;padding:54px;position:relative;display:flex;align-items:center}.slide-number{position:absolute;top:22px;right:30px;color:#98a2b3;font-weight:700}.slide-title{font-size:2.6rem;font-weight:900;line-height:1.1}.slide-subtitle{font-size:1.2rem;color:#667085}.slide-list li{font-size:1.25rem;margin-bottom:16px}.slide-highlight{background:linear-gradient(135deg,#e5f5ff,#effaf8);border-left:6px solid #0b5ed7;padding:22px;border-radius:18px}.slide-controls{margin-top:18px;display:flex;gap:14px}.formula-box{font-size:1.5rem;background:#06172e;color:#fff;border-radius:18px;padding:20px;text-align:center}@media(max-width:991px){.slide-wrapper{display:block;height:calc(100vh - 56px);overflow:auto}.slide-card{min-height:auto;padding:36px 24px}.slide-title{font-size:2rem}.slide-body{overflow:auto}.slide-stage{min-height:calc(100vh - 56px)}}
+
+.geo-navbar {
+  background: rgba(3, 19, 43, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.slide-wrapper {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  padding: 24px;
+  min-height: calc(100vh - 58px);
+}
+
+.slide-sidebar {
+  background: rgba(255,255,255,0.92);
+  border-radius: 24px;
+  padding: 20px;
+  color: #0f1f33;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+
+.slide-thumb {
+  width: 100%;
+  border: 0;
+  background: #f3f7fb;
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  text-align: left;
+  transition: 0.2s;
+}
+
+.slide-thumb span {
+  background: #0d6efd;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.slide-thumb p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.slide-thumb.active,
+.slide-thumb:hover {
+  background: #dbeafe;
+  transform: translateX(4px);
+}
+
+.slide-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-card {
+  position: relative;
+  width: min(1120px, 100%);
+  min-height: 650px;
+  background: rgba(255,255,255,0.96);
+  color: #102033;
+  border-radius: 30px;
+  padding: 46px;
+  overflow: hidden;
+}
+
+.slide-number {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  background: #0d6efd;
+  color: #fff;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.slide-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.cover-slide {
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    linear-gradient(135deg, rgba(13,110,253,.9), rgba(13,202,240,.76)),
+    url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1600&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+  margin: -46px;
+  padding: 70px;
+  color: #fff;
+}
+
+.cover-slide h1 {
+  font-weight: 900;
+  font-size: clamp(2.3rem, 5vw, 4.5rem);
+}
+
+.cover-slide h3 {
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.lecturer-box {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  padding: 16px 22px;
+  border-radius: 999px;
+  width: fit-content;
+  font-weight: 600;
+}
+
+.slide-card h2 {
+  color: #073b7a;
+  font-weight: 850;
+  margin-bottom: 18px;
+}
+
+.slide-card h4 {
+  color: #0d6efd;
+  font-weight: 750;
+  margin-bottom: 16px;
+}
+
+.info-box {
+  background: #f6faff;
+  border: 1px solid #dcecff;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.info-box h5 {
+  color: #073b7a;
+  font-weight: 800;
+}
+
+.example-box {
+  background: #ecfeff;
+  border-left: 6px solid #06b6d4;
+  border-radius: 18px;
+  padding: 18px 20px;
+}
+
+.note-box {
+  background: #fff7e6;
+  border-left: 6px solid #ffc107;
+  border-radius: 18px;
+  padding: 18px 20px;
+}
+
+.math-box {
+  background: #07111f;
+  color: #fff;
+  border-left: 6px solid #ffc107;
+  border-radius: 18px;
+  padding: 18px 22px;
+  margin: 16px 0;
+  overflow-x: auto;
+}
+
+.small-math {
+  font-size: 0.88rem;
+}
+
+.result-box {
+  background: #07111f;
+  color: white;
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+
+.quote-slide {
+  min-height: 530px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.quote-slide h2 {
+  font-size: clamp(2rem, 4vw, 4rem);
+  color: #073b7a;
+}
+
+.quote-slide p {
+  font-size: 1.25rem;
+  color: #53606f;
+}
+
+@media (max-width: 991px) {
+  .slide-wrapper {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .slide-card {
+    min-height: auto;
+    padding: 28px;
+  }
+
+  .cover-slide {
+    margin: -28px;
+    padding: 42px;
+  }
+}
+
+/* PDF / Print Mode */
+@media print {
+  body {
+    background: #fff !important;
+  }
+
+  .geo-navbar,
+  .slide-sidebar,
+  .slide-controls {
+    display: none !important;
+  }
+
+  .slide-wrapper {
+    display: block;
+    padding: 0;
+  }
+
+  .slide-stage {
+    display: block;
+  }
+
+  .slide-card {
+    box-shadow: none !important;
+    border-radius: 0;
+    width: 100%;
+    min-height: auto;
+    padding: 30px;
+  }
+
+  .slide-number {
+    display: none;
+  }
+}
