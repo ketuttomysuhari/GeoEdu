@@ -1,192 +1,114 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GeoEdu | Slide Interaktif</title>
 
-<title>GeoEdu | Slide Interaktif</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/style.css?v=final-b1" rel="stylesheet">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-<link href="assets/style.css" rel="stylesheet">
-
-<!-- MathJax -->
-<script>
-window.MathJax = {
-  tex: {
-    packages: {'[+]': ['ams']},
-    inlineMath: [['\\(', '\\)']],
-    displayMath: [['\\[', '\\]']]
-  },
-  svg: {
-    fontCache: 'global'
-  },
-  startup: {
-    typeset: false
-  }
-};
-</script>
-
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        processEscapes: true
+      },
+      chtml: {
+        scale: 1.08,
+        mtextInheritFont: true
+      },
+      startup: {
+        typeset: false
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body class="slide-body">
 
-<!-- NAVBAR -->
 <nav class="navbar navbar-dark geo-navbar px-3">
   <a class="navbar-brand fw-bold" href="index.html">
     <i class="bi bi-globe-asia-australia me-2"></i>GeoEdu
   </a>
 
   <div class="d-flex gap-2">
-
-    <a id="backBtn"
-       class="btn btn-outline-light btn-sm"
-       href="course.html">
+    <a id="backBtn" class="btn btn-outline-light btn-sm" href="course.html">
       <i class="bi bi-arrow-left me-1"></i>Pertemuan
     </a>
 
-    <button class="btn btn-warning btn-sm"
-            onclick="downloadPDF()">
+    <button class="btn btn-warning btn-sm" onclick="downloadPDF()">
       <i class="bi bi-file-earmark-pdf me-1"></i>PDF
     </button>
 
-    <button class="btn btn-light btn-sm"
-            onclick="toggleFullscreen()">
+    <button class="btn btn-light btn-sm" onclick="toggleFullscreen()">
       <i class="bi bi-fullscreen"></i>
     </button>
-
   </div>
 </nav>
 
-<!-- CONTENT -->
 <main class="slide-wrapper">
-
-  <!-- SIDEBAR -->
   <aside class="slide-sidebar d-none d-lg-block">
     <h6 class="text-uppercase text-muted">Outline Slide</h6>
     <div id="slideThumbs"></div>
   </aside>
 
-  <!-- STAGE -->
   <section class="slide-stage">
-
     <div class="slide-card shadow-lg">
-
-      <div class="slide-number"
-           id="slideCounter">
-        1 / 1
-      </div>
-
+      <div class="slide-number" id="slideCounter">1 / 1</div>
       <div id="slideContent">
-        <div class="text-center py-5">
-          <div class="spinner-border text-primary"></div>
+        <div class="loader-box">
+          <div class="spinner-border text-info"></div>
           <p class="mt-3">Memuat materi...</p>
         </div>
       </div>
-
     </div>
 
     <div class="slide-controls">
-
-      <button class="btn btn-outline-light"
-              onclick="prevSlide()">
-        <i class="bi bi-chevron-left"></i>
-        Sebelumnya
+      <button class="btn btn-outline-light" onclick="prevSlide()">
+        <i class="bi bi-chevron-left"></i> Sebelumnya
       </button>
 
-      <button class="btn btn-light"
-              onclick="nextSlide()">
-        Berikutnya
-        <i class="bi bi-chevron-right"></i>
+      <button class="btn btn-light" onclick="nextSlide()">
+        Berikutnya <i class="bi bi-chevron-right"></i>
       </button>
-
     </div>
-
   </section>
-
 </main>
 
-<!-- MAIN LOADER -->
-<script src="assets/lesson-loader.js?v=3"></script>
+<script src="assets/lesson-loader.js?v=final-b1"></script>
 
 <script>
-/* ======================================================
-   AUTO LOAD MATERI BERDASARKAN URL
-   lesson.html?course=kkg&meeting=8
-====================================================== */
-
 const params = new URLSearchParams(window.location.search);
-
-const course  = params.get("course")  || "kkg";
+const course = params.get("course") || "kkg";
 const meeting = params.get("meeting") || "8";
 
-/* tombol kembali */
-document.getElementById("backBtn").href =
-  `course.html?course=${course}`;
+document.getElementById("backBtn").href = `course.html?course=${course}`;
+document.title = `GeoEdu | ${course.toUpperCase()} Pertemuan ${meeting}`;
 
-/* judul tab */
-document.title =
-  `GeoEdu | ${course.toUpperCase()} Pertemuan ${meeting}`;
+const materialScript = document.createElement("script");
+materialScript.src = `data/meetings/${course}-${meeting}.js?v=${Date.now()}`;
 
-/* load file js materi */
-const script = document.createElement("script");
-
-script.src =
-  `data/%20meetings/${course}-${meeting}.js?v=${Date.now()}`;
-
-script.onload = function () {
-
-  if (typeof initLesson === "function") {
+materialScript.onload = function () {
+  if (window.slides && Array.isArray(window.slides)) {
     initLesson();
   } else {
-    showError("lesson-loader.js gagal dimuat.");
+    showLessonError("File materi terbaca, tetapi <b>window.slides</b> tidak ditemukan.");
   }
-
 };
 
-script.onerror = function () {
-
-  showError(`
+materialScript.onerror = function () {
+  showLessonError(`
     Materi belum tersedia.<br>
-    File:<br>
-    <b>data/meetings/${course}-${meeting}.js</b>
+    File yang dicari:<br>
+    <code>data/meetings/${course}-${meeting}.js</code>
   `);
-
 };
 
-document.body.appendChild(script);
-
-/* ====================================================== */
-
-function showError(msg) {
-  document.getElementById("slideContent").innerHTML = `
-    <div class="text-center py-5">
-      <i class="bi bi-exclamation-triangle fs-1 text-danger"></i>
-      <h3 class="mt-3">Materi Tidak Ditemukan</h3>
-      <p>${msg}</p>
-    </div>
-  `;
-}
-
-/* ====================================================== */
-
-function toggleFullscreen() {
-
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
-  } else {
-    document.exitFullscreen();
-  }
-
-}
-
-/* ====================================================== */
-
-function downloadPDF() {
-  window.print();
-}
+document.body.appendChild(materialScript);
 </script>
 
 </body>
