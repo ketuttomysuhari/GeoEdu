@@ -9,17 +9,24 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/style.css" rel="stylesheet">
 
-  <!-- MathJax -->
+  <!-- MathJax Config -->
   <script>
     window.MathJax = {
       tex: {
         inlineMath: [['\\(', '\\)'], ['$', '$']],
-        displayMath: [['\\[', '\\]']]
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true
       },
-      svg: { fontCache: 'global' }
+      svg: {
+        fontCache: 'global'
+      },
+      startup: {
+        typeset: false
+      }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 
 <body class="slide-body">
@@ -70,7 +77,53 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- App utama -->
 <script src="assets/app.js"></script>
+
+<!-- MathJax Repair Script -->
+<script>
+  function repairMathArtifacts() {
+    const slideContent = document.getElementById("slideContent");
+    if (!slideContent) return;
+
+    let html = slideContent.innerHTML;
+
+    html = html
+      .replace(/begin\s*:\s*math\s*:\s*display/gi, '\\[')
+      .replace(/\$?end\s*:\s*math\s*:\s*display\$?/gi, '\\]')
+      .replace(/begin\s*:\s*math\s*:\s*text/gi, '\\(')
+      .replace(/begin\s*:\s*math\s*:\s*textv/gi, '\\(v')
+      .replace(/begin\s*:\s*math\s*:\s*textP/gi, '\\(P')
+      .replace(/begin\s*:\s*math\s*:\s*text\\Phi/gi, '\\(\\Phi')
+      .replace(/end\s*:\s*math\s*:\s*text/gi, '\\)')
+      .replace(/\\Phi/g, '\\Phi')
+      .replace(/\\sum/g, '\\sum')
+      .replace(/\\frac/g, '\\frac')
+      .replace(/\\hat/g, '\\hat')
+      .replace(/\\sigma/g, '\\sigma');
+
+    slideContent.innerHTML = html;
+
+    if (window.MathJax && MathJax.typesetPromise) {
+      MathJax.typesetClear([slideContent]);
+      MathJax.typesetPromise([slideContent]);
+    }
+  }
+
+  const originalRenderSlide = window.renderSlide;
+
+  window.renderSlide = function () {
+    if (typeof originalRenderSlide === "function") {
+      originalRenderSlide();
+    }
+
+    setTimeout(repairMathArtifacts, 150);
+  };
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(repairMathArtifacts, 500);
+  });
+</script>
 
 </body>
 </html>
