@@ -13,7 +13,7 @@ content: `
   <span class="badge bg-warning text-dark mb-3">Pertemuan 8</span>
   <h1>KERANGKA KONTROL GEODESI</h1>
   <h3>Adjustment / Perataan Pengukuran</h3>
-  <p class="lead mt-4">Disusun untuk Mata Kuliah Geodesi / Survei Teknik</p>
+  <p class="lead mt-4">Disusun untuk Mata Kuliah Kerangka Kontrol Geodesi</p>
 
   <div class="lecturer-box mt-5">
     Dr. Ir. Ketut Tomy Suhari, S.T., M.T., IRSurv.
