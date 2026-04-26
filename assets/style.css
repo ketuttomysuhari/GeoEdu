@@ -1,30 +1,26 @@
 /* =========================================================
-   GEOEDU FULL MODERN STYLE.CSS
-   Modern UI from Index -> Course -> Lesson Slides
+   GEOEDU STYLE.CSS FULL FINAL
+   MODERN UI + FINAL FIX MATH FORMULA
 ========================================================= */
 
-/* ---------- ROOT ---------- */
+/* ================= ROOT ================= */
 :root{
   --primary:#2563eb;
   --primary2:#1d4ed8;
   --dark:#0f172a;
   --dark2:#111827;
   --light:#f8fafc;
-  --muted:#94a3b8;
   --white:#ffffff;
-  --success:#16a34a;
+  --muted:#94a3b8;
+  --success:#10b981;
   --warning:#f59e0b;
   --danger:#ef4444;
 
-  --radius:18px;
-  --shadow:
-    0 10px 30px rgba(0,0,0,.12);
-
-  --glass:
-    rgba(255,255,255,.08);
+  --radius:20px;
+  --shadow:0 18px 45px rgba(0,0,0,.18);
 }
 
-/* ---------- RESET ---------- */
+/* ================= RESET ================= */
 *{
   margin:0;
   padding:0;
@@ -38,12 +34,10 @@ html{
 body{
   font-family:
     Inter,
-    ui-sans-serif,
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
-    Roboto,
     sans-serif;
 
   background:
@@ -52,25 +46,24 @@ body{
   color:#0f172a;
 }
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+/* ================= NAVBAR ================= */
 .geo-navbar{
+  min-height:72px;
   background:
     linear-gradient(135deg,var(--primary),var(--primary2));
 
-  min-height:72px;
-  box-shadow:0 8px 20px rgba(37,99,235,.25);
+  box-shadow:
+    0 8px 24px rgba(37,99,235,.25);
 }
 
 .geo-navbar .navbar-brand{
+  font-weight:800;
   font-size:1.35rem;
-  letter-spacing:.4px;
 }
 
 .geo-navbar .btn{
-  border-radius:12px;
-  font-weight:600;
+  border-radius:14px;
+  font-weight:700;
 }
 
 /* =========================================================
@@ -80,18 +73,6 @@ body{
   padding:80px 0;
 }
 
-.hero-title{
-  font-size:3rem;
-  font-weight:800;
-  line-height:1.15;
-}
-
-.hero-subtitle{
-  font-size:1.15rem;
-  color:#475569;
-  margin-top:15px;
-}
-
 .hero-box{
   background:#fff;
   border-radius:28px;
@@ -99,35 +80,41 @@ body{
   box-shadow:var(--shadow);
 }
 
-/* course cards */
+.hero-title{
+  font-size:3rem;
+  font-weight:900;
+}
+
+.hero-subtitle{
+  color:#475569;
+  font-size:1.15rem;
+  margin-top:15px;
+}
+
 .course-card{
   background:#fff;
   border:none;
-  border-radius:22px;
+  border-radius:24px;
   padding:28px;
-  transition:.25s ease;
   box-shadow:var(--shadow);
+  transition:.25s ease;
   height:100%;
 }
 
 .course-card:hover{
   transform:translateY(-8px);
-  box-shadow:
-    0 18px 40px rgba(37,99,235,.15);
 }
 
 .course-card h4{
   font-weight:800;
-  margin-bottom:10px;
 }
 
 .course-card p{
   color:#64748b;
-  min-height:70px;
 }
 
 .course-card .btn{
-  border-radius:12px;
+  border-radius:14px;
   font-weight:700;
 }
 
@@ -143,40 +130,37 @@ body{
 }
 
 .course-header h1{
-  font-weight:800;
+  font-weight:900;
 }
 
 .meeting-btn{
   display:block;
-  background:#fff;
   text-decoration:none;
-  color:#0f172a;
+  color:#111827;
+  background:#fff;
   border-radius:18px;
-  padding:22px;
-  text-align:center;
+  padding:20px;
   font-weight:700;
-  transition:.22s;
+  text-align:center;
   box-shadow:var(--shadow);
+  transition:.2s;
 }
 
 .meeting-btn:hover{
   transform:translateY(-5px);
-  background:linear-gradient(135deg,#dbeafe,#eff6ff);
   color:var(--primary);
 }
 
 /* =========================================================
-   LESSON / SLIDE MODE
+   LESSON PAGE
 ========================================================= */
 .slide-body{
-  margin:0;
   background:
     radial-gradient(circle at top left,#1e3a8a,#0f172a 55%);
-  min-height:100vh;
   color:#fff;
+  min-height:100vh;
 }
 
-/* main wrapper */
 .slide-wrapper{
   display:flex;
   gap:24px;
@@ -189,7 +173,7 @@ body{
   width:290px;
   background:rgba(255,255,255,.07);
   border:1px solid rgba(255,255,255,.08);
-  border-radius:22px;
+  border-radius:24px;
   padding:20px;
   backdrop-filter:blur(12px);
   overflow-y:auto;
@@ -197,19 +181,19 @@ body{
 
 .slide-sidebar h6{
   color:#cbd5e1;
-  margin-bottom:18px;
-  font-weight:700;
+  margin-bottom:16px;
+  font-weight:800;
 }
 
-/* thumbs */
+/* thumb */
 .slide-thumb{
   width:100%;
-  text-align:left;
   border:none;
+  text-align:left;
+  border-radius:16px;
+  padding:14px;
   background:rgba(255,255,255,.05);
   color:#fff;
-  border-radius:16px;
-  padding:14px 14px;
   margin-bottom:12px;
   transition:.2s;
 }
@@ -222,8 +206,8 @@ body{
 
 .slide-thumb p{
   margin:4px 0 0;
+  font-weight:700;
   font-size:.95rem;
-  font-weight:600;
 }
 
 .slide-thumb:hover{
@@ -245,32 +229,35 @@ body{
 /* slide card */
 .slide-card{
   flex:1;
+  position:relative;
+
   background:
-    linear-gradient(145deg,
-    rgba(255,255,255,.10),
-    rgba(255,255,255,.05));
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.10),
+      rgba(255,255,255,.05)
+    );
 
   border:1px solid rgba(255,255,255,.08);
-  border-radius:28px;
-  padding:40px;
+  border-radius:30px;
+  padding:42px;
   backdrop-filter:blur(16px);
-  box-shadow:
-    0 18px 40px rgba(0,0,0,.22);
+  box-shadow:var(--shadow);
 
   overflow:auto;
-  position:relative;
 }
 
-/* slide counter */
+/* counter */
 .slide-number{
   position:absolute;
   top:18px;
   right:24px;
-  background:rgba(255,255,255,.10);
-  padding:8px 14px;
+
+  background:rgba(255,255,255,.08);
   border-radius:999px;
+  padding:8px 14px;
   font-size:.85rem;
-  font-weight:700;
+  font-weight:800;
   color:#e2e8f0;
 }
 
@@ -283,13 +270,13 @@ body{
 }
 
 .slide-controls .btn{
-  border-radius:14px;
-  font-weight:700;
   min-width:180px;
+  border-radius:14px;
+  font-weight:800;
 }
 
 /* =========================================================
-   TYPOGRAPHY SLIDES
+   TYPOGRAPHY
 ========================================================= */
 .slide-card h1{
   font-size:3rem;
@@ -298,7 +285,7 @@ body{
 
 .slide-card h2{
   font-size:2rem;
-  font-weight:800;
+  font-weight:900;
   margin-bottom:16px;
 }
 
@@ -317,7 +304,7 @@ body{
 
 .slide-card h5{
   font-size:1rem;
-  font-weight:700;
+  font-weight:800;
 }
 
 .slide-card p,
@@ -333,7 +320,7 @@ body{
 }
 
 /* =========================================================
-   COMPONENT BOXES
+   BOXES
 ========================================================= */
 .info-box,
 .note-box,
@@ -345,18 +332,18 @@ body{
 }
 
 .info-box{
-  background:rgba(59,130,246,.18);
-  border:1px solid rgba(147,197,253,.25);
+  background:rgba(59,130,246,.16);
+  border:1px solid rgba(147,197,253,.22);
 }
 
 .note-box{
-  background:rgba(245,158,11,.15);
-  border:1px solid rgba(245,158,11,.25);
+  background:rgba(245,158,11,.14);
+  border:1px solid rgba(245,158,11,.22);
 }
 
 .example-box{
   background:rgba(16,185,129,.14);
-  border:1px solid rgba(16,185,129,.25);
+  border:1px solid rgba(16,185,129,.22);
 }
 
 .result-box{
@@ -368,33 +355,28 @@ body{
    TABLE
 ========================================================= */
 .table{
+  color:#fff;
   border-radius:18px;
   overflow:hidden;
-  color:#fff;
 }
 
-.table thead{
-  background:rgba(255,255,255,.10);
-}
-
-.table td,
-.table th{
+.table th,
+.table td{
   border-color:rgba(255,255,255,.08);
   padding:14px;
 }
 
 /* =========================================================
-   FORM INPUT
+   FORM
 ========================================================= */
 .form-control{
-  border-radius:14px;
   border:none;
+  border-radius:14px;
   padding:14px;
-  font-size:1rem;
 }
 
 /* =========================================================
-   COVER SLIDE
+   COVER
 ========================================================= */
 .cover-slide{
   min-height:70vh;
@@ -405,7 +387,6 @@ body{
 
 .cover-slide h1{
   font-size:3.4rem;
-  margin-bottom:12px;
 }
 
 .cover-slide h3{
@@ -413,12 +394,11 @@ body{
 }
 
 .lecturer-box{
+  display:inline-block;
   background:rgba(255,255,255,.10);
   padding:18px 24px;
   border-radius:18px;
-  display:inline-block;
-  font-weight:700;
-  margin-top:20px;
+  font-weight:800;
 }
 
 /* quote */
@@ -436,40 +416,76 @@ body{
 }
 
 .quote-slide p{
-  margin-top:22px;
   color:#cbd5e1;
+  margin-top:20px;
 }
 
 /* =========================================================
-   MATH FORMULA
+   FINAL PREMIUM MATH FORMULA FIX
 ========================================================= */
+
 .math-box{
   background:
-    linear-gradient(135deg,
-    rgba(255,255,255,.08),
-    rgba(255,255,255,.04));
+    linear-gradient(
+      135deg,
+      rgba(37,99,235,.18),
+      rgba(30,41,59,.35)
+    );
 
   border:1px solid rgba(255,255,255,.10);
-  border-radius:20px;
+  border-radius:22px;
   padding:24px;
-  margin:22px 0;
+  margin:24px 0;
   overflow-x:auto;
   text-align:center;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 10px 20px rgba(0,0,0,.12);
 }
 
-/* mathjax container */
+/* hapus background hitam safari/mathjax */
+mjx-container,
+mjx-container *,
+mjx-container svg,
+mjx-container svg *{
+  background:transparent !important;
+}
+
+/* warna utama rumus */
 mjx-container{
   color:#ffffff !important;
-  font-size:125% !important;
+  font-size:135% !important;
+  margin:0 auto !important;
 }
 
-/* svg formula */
+/* semua svg */
 mjx-container svg{
+  fill:#ffffff !important;
+  stroke:none !important;
+  max-width:100%;
+  height:auto !important;
+}
+
+/* semua path */
+mjx-container svg path{
+  fill:#ffffff !important;
+  stroke:none !important;
+}
+
+/* bracket matrix dsb */
+mjx-container svg g{
   fill:#ffffff !important;
 }
 
+/* inline math */
+.math-inline mjx-container{
+  font-size:110% !important;
+  display:inline-block !important;
+}
+
 /* =========================================================
-   PRINT / PDF
+   PDF / PRINT
 ========================================================= */
 @media print{
 
@@ -492,8 +508,8 @@ mjx-container svg{
   .slide-card{
     background:#fff !important;
     color:#000 !important;
-    box-shadow:none !important;
     border:none !important;
+    box-shadow:none !important;
     padding:30px !important;
   }
 
@@ -501,14 +517,23 @@ mjx-container svg{
     color:#000 !important;
   }
 
-  mjx-container svg{
-    fill:#000 !important;
+  .math-box{
+    background:#f5f5f5 !important;
+    border:1px solid #ddd !important;
   }
 
+  mjx-container{
+    color:#000 !important;
+  }
+
+  mjx-container svg,
+  mjx-container svg path{
+    fill:#000 !important;
+  }
 }
 
 /* =========================================================
-   MOBILE
+   RESPONSIVE
 ========================================================= */
 @media(max-width:992px){
 
@@ -526,11 +551,6 @@ mjx-container svg{
 
   .slide-card h2{
     font-size:1.5rem;
-  }
-
-  .slide-card p,
-  .slide-card li{
-    font-size:1rem;
   }
 
   .slide-controls{
@@ -558,7 +578,7 @@ mjx-container svg{
   }
 
   .slide-card{
-    border-radius:20px;
+    border-radius:22px;
   }
 
 }
