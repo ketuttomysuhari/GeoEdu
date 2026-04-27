@@ -18,45 +18,88 @@ const slides = [
     `
   },
 
-  {
-    title: "Pengantar KKG",
-    content: `
-      <h2>I. Pendahuluan & Konsep Dasar</h2>
-      <h4>1.1 Kerangka Kontrol Geodesi</h4>
+{
+  title: "Pengantar KKG",
+  content: `
+    <h2>I. Pendahuluan & Konsep Dasar</h2>
+    <h4>1.1 Kerangka Kontrol Geodesi</h4>
 
-      <p>
-        Kerangka Kontrol Geodesi adalah jaringan titik tetap yang koordinatnya
-        ditentukan secara teliti dan menjadi referensi utama pekerjaan survei,
-        pemetaan, konstruksi, kadaster, serta monitoring deformasi.
-      </p>
+    <p>
+      Kerangka Kontrol Geodesi (KKG) adalah jaringan titik-titik referensi
+      yang koordinatnya ditentukan dengan ketelitian tinggi dalam suatu sistem
+      datum tertentu. Titik-titik ini menjadi dasar bagi seluruh kegiatan
+      survei, pemetaan, rekayasa teknik, kadaster, navigasi, hingga monitoring
+      deformasi permukaan bumi.
+    </p>
 
-      <div class="row g-3">
-        <div class="col-md-6">
-          <div class="info-box">
-            <h5>Fungsi KKG</h5>
-            <ul>
-              <li>Fondasi Sistem Informasi Geografis</li>
-              <li>Referensi konstruksi jalan, jembatan, dan gedung</li>
-              <li>Acuan batas bidang tanah / kadaster</li>
-              <li>Monitoring deformasi dan pergeseran titik</li>
-            </ul>
-          </div>
-        </div>
+    <p>
+      Secara filosofis, KKG adalah <b>bahasa posisi</b> yang menyatukan semua
+      pengukuran. Tanpa kerangka kontrol, setiap pengukuran berdiri sendiri,
+      tidak saling terhubung, dan kehilangan makna spasial. Dengan adanya KKG,
+      setiap titik di lapangan memiliki hubungan matematis terhadap titik lain,
+      terhadap wilayah, bahkan terhadap bumi secara keseluruhan.
+    </p>
 
-        <div class="col-md-6">
-          <div class="info-box">
-            <h5>Tujuan Pengukuran</h5>
-            <ul>
-              <li><b>Akurasi</b>: dekat dengan nilai benar</li>
-              <li><b>Presisi</b>: hasil konsisten</li>
-              <li><b>Reliabilitas</b>: mampu mendeteksi kesalahan</li>
-              <li><b>Konsistensi</b>: sesuai datum dan sistem referensi</li>
-            </ul>
-          </div>
+    <div class="quote-box">
+      <b>Filosofi Geodesi:</b><br>
+      “Jika suatu titik diketahui dengan benar, maka titik-titik lain dapat
+      ditentukan dengan benar pula.”
+    </div>
+
+    <p>
+      Karena itu, kualitas suatu peta, bangunan, batas tanah, maupun sistem
+      navigasi modern sangat bergantung pada kualitas kerangka kontrol yang
+      menopangnya.
+    </p>
+
+    <div class="row g-3">
+
+      <div class="col-md-6">
+        <div class="info-box h-100">
+          <h5>Fungsi Utama KKG</h5>
+          <ul>
+            <li>Fondasi Sistem Informasi Geografis (SIG)</li>
+            <li>Referensi pembangunan jalan, jembatan, gedung</li>
+            <li>Acuan batas bidang tanah dan kadaster</li>
+            <li>Kontrol jaringan pengukuran detail</li>
+            <li>Monitoring deformasi, amblesan, longsor, gempa</li>
+            <li>Dasar integrasi data GNSS, UAV, LiDAR, dan citra satelit</li>
+          </ul>
         </div>
       </div>
-    `
-  },
+
+      <div class="col-md-6">
+        <div class="info-box h-100">
+          <h5>Tujuan Pengukuran pada KKG</h5>
+          <ul>
+            <li><b>Akurasi</b> = dekat dengan nilai sebenarnya</li>
+            <li><b>Presisi</b> = hasil berulang yang konsisten</li>
+            <li><b>Reliabilitas</b> = mampu mendeteksi kesalahan</li>
+            <li><b>Konsistensi</b> = sesuai datum & sistem koordinat</li>
+            <li><b>Redundansi</b> = observasi cukup untuk pengecekan</li>
+            <li><b>Stabilitas</b> = titik kontrol tidak mudah berubah</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="example-box mt-4">
+      <b>Contoh Sederhana:</b><br>
+      Jika sebuah gedung dibangun tanpa titik acuan yang benar,
+      maka posisi kolom, elevasi lantai, dan batas lahan dapat bergeser.
+      Namun jika semua pekerjaan mengacu pada KKG yang sama,
+      maka seluruh elemen akan konsisten dan presisi.
+    </div>
+
+    <div class="note-box mt-4">
+      <b>Inti Pemahaman:</b><br>
+      KKG bukan sekadar kumpulan patok atau koordinat,
+      tetapi sistem kepercayaan ilmiah bahwa setiap posisi di bumi
+      dapat ditentukan, diuji, dan dipertanggungjawabkan secara matematis.
+    </div>
+  `
+},
 
 {
   title: "Mengapa Adjustment?",
