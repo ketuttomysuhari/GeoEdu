@@ -286,43 +286,88 @@ const slides = [
   `
 },
 
-  {
-    title: "Distribusi Error",
-    content: `
-      <h2>2.2 Distribusi Kesalahan Acak</h2>
+{
+  title: "Distribusi Error",
+  content: `
+    <h2>2.2 Distribusi Kesalahan Acak</h2>
 
-      <p>
-        Dalam geodesi, kesalahan acak sering diasumsikan mengikuti distribusi normal.
-      </p>
+    <p>
+      Kesalahan acak pada pengukuran geodesi umumnya mengikuti
+      <b>Distribusi Normal</b>, yaitu error kecil sering terjadi,
+      sedangkan error besar jarang terjadi.
+    </p>
 
-      ${DM(String.raw`f(e)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{e^2}{2\sigma^2}\right)`)}
+    ${DM(String.raw`f(e)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{e^2}{2\sigma^2}}`)}
 
-      <div class="row g-3">
-        <div class="col-md-6">
-          <div class="info-box">
-            <h5>Makna</h5>
-            <ul>
-              <li>Error kecil lebih sering muncul</li>
-              <li>Error besar lebih jarang muncul</li>
-              <li>Distribusi simetris terhadap nol</li>
-            </ul>
-          </div>
-        </div>
+    <div class="text-center my-4">
 
-        <div class="col-md-6">
-          <div class="info-box">
-            <h5>Digunakan Untuk</h5>
-            <ul>
-              <li>Analisis residual</li>
-              <li>Uji statistik</li>
-              <li>Estimasi ketelitian</li>
-              <li>Deteksi blunder</li>
-            </ul>
-          </div>
+      <svg viewBox="0 0 700 380" style="max-width:100%;background:#fff;border-radius:12px;padding:10px">
+
+        <!-- axis -->
+        <line x1="60" y1="320" x2="650" y2="320" stroke="#333" stroke-width="2"/>
+        <line x1="350" y1="40" x2="350" y2="330" stroke="#999" stroke-dasharray="5,5"/>
+
+        <!-- curve -->
+        <path d="
+          M70 320
+          C120 320,160 280,200 220
+          C240 150,280 90,350 70
+          C420 90,460 150,500 220
+          C540 280,580 320,630 320
+        "
+        fill="none"
+        stroke="#0d6efd"
+        stroke-width="4"/>
+
+        <!-- sigma areas -->
+        <rect x="250" y="70" width="200" height="250"
+              fill="rgba(13,110,253,0.15)"/>
+
+        <!-- labels -->
+        <text x="340" y="25" font-size="18" font-weight="bold">Distribusi Normal Error</text>
+
+        <text x="340" y="345" font-size="14">0</text>
+        <text x="250" y="345" font-size="14">-1σ</text>
+        <text x="450" y="345" font-size="14">+1σ</text>
+        <text x="160" y="345" font-size="14">-2σ</text>
+        <text x="540" y="345" font-size="14">+2σ</text>
+        <text x="80" y="345" font-size="14">-3σ</text>
+        <text x="610" y="345" font-size="14">+3σ</text>
+
+        <text x="285" y="140" font-size="16" fill="#0d6efd">68.27%</text>
+        <text x="215" y="200" font-size="15">95.45%</text>
+        <text x="140" y="255" font-size="14">99.73%</text>
+
+      </svg>
+    </div>
+
+    <div class="row g-3">
+
+      <div class="col-md-6">
+        <div class="info-box">
+          <h5>Interpretasi</h5>
+          <ul>
+            <li>Error dekat nol paling sering muncul</li>
+            <li>Semakin jauh dari nol semakin jarang</li>
+            <li>Simetris positif dan negatif</li>
+          </ul>
         </div>
       </div>
-    `
-  },
+
+      <div class="col-md-6">
+        <div class="info-box">
+          <h5>Dalam Geodesi</h5>
+          <ul>
+            <li>Residual normal = data baik</li>
+            <li>Outlier di luar ±3σ dicurigai blunder</li>
+            <li>Dasar Least Squares Adjustment</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  `
+},
 
   {
     title: "Least Squares",
