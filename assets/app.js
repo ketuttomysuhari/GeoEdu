@@ -369,68 +369,200 @@ const slides = [
   `
 },
 
-  {
-    title: "Least Squares",
-    content: `
-      <h2>III. Metode Kuadrat Terkecil</h2>
-      <h4>3.1 Prinsip Least Squares</h4>
+{
+  title: "Least Squares",
+  content: `
+    <h2>III. Metode Kuadrat Terkecil</h2>
+    <h4>3.1 Prinsip Least Squares</h4>
 
-      <p>
-        Metode kuadrat terkecil mencari nilai parameter yang membuat jumlah kuadrat
-        residual menjadi minimum.
-      </p>
+    <p>
+      Dalam praktik survei dan geodesi, hasil pengamatan hampir selalu
+      mengandung error. Karena itu, beberapa observasi terhadap besaran yang sama
+      sering menghasilkan nilai berbeda-beda. Pertanyaannya adalah:
+      <b>nilai mana yang paling layak dipercaya?</b>
+    </p>
 
-      ${DM(String.raw`\sum_{i=1}^{n} v_i^2 = \min`)}
+    <p>
+      Jawaban ilmiahnya diberikan oleh <b>Metode Kuadrat Terkecil (Least Squares)</b>,
+      yaitu mencari parameter terbaik sehingga jumlah kuadrat residual menjadi minimum.
+    </p>
 
-      <p>
-        Untuk pengamatan dengan bobot berbeda, digunakan bentuk berbobot:
-      </p>
+    ${DM(String.raw`\sum_{i=1}^{n} v_i^2 = \min`)}
 
-      ${DM(String.raw`\Phi = v^T P v = \min`)}
+    <p>
+      Residual ${IM(String.raw`v_i`)} adalah selisih antara hasil observasi
+      dengan nilai hasil penyesuaian.
+    </p>
 
-      <div class="info-box">
-        <h5>Keterangan</h5>
-        <ul>
-          <li>${IM(String.raw`v`)} = vektor residual</li>
-          <li>${IM(String.raw`P`)} = matriks bobot pengamatan</li>
-          <li>${IM(String.raw`\Phi`)} = fungsi objektif yang diminimumkan</li>
-        </ul>
+    <div class="quote-box">
+      <b>Filosofi Least Squares:</b><br>
+      Kita tidak dapat memaksa semua observasi menjadi benar,
+      tetapi kita dapat mencari solusi yang membuat keseluruhan kesalahan
+      menjadi sekecil mungkin.
+    </div>
+
+    <p>
+      Mengapa dikuadratkan?
+    </p>
+
+    <ul>
+      <li>Error positif dan negatif tidak saling menghapus</li>
+      <li>Error besar diberi penalti lebih besar</li>
+      <li>Secara matematis mudah diturunkan dan stabil</li>
+    </ul>
+
+    <h5>Contoh Sederhana</h5>
+
+    <p>
+      Jarak AB diukur 3 kali:
+      100.024 m, 100.019 m, 100.027 m
+    </p>
+
+    <p>
+      Misal dicoba dua kandidat solusi:
+    </p>
+
+    <div class="row g-3">
+
+      <div class="col-md-6">
+        <div class="info-box h-100">
+          <h5>Kandidat 1</h5>
+          ${DM(String.raw`x = 100.020`)}
+          Residual:
+          <br>
+          +0.004, -0.001, +0.007
+          ${DM(String.raw`\sum v^2 = 0.000066`)}
+        </div>
       </div>
 
-      <div class="example-box mt-3">
-        Pengamatan dengan ketelitian lebih tinggi diberi bobot lebih besar.
+      <div class="col-md-6">
+        <div class="info-box h-100">
+          <h5>Kandidat 2</h5>
+          ${DM(String.raw`x = 100.0233`)}
+          Residual:
+          <br>
+          +0.0007, -0.0043, +0.0037
+          ${DM(String.raw`\sum v^2 = 0.0000327`)}
+        </div>
       </div>
-    `
-  },
 
-  {
-    title: "Model Observasi",
-    content: `
-      <h2>3.2 Model Matematis Adjustment</h2>
+    </div>
 
-      <p>
-        Model umum observasi dalam adjustment dapat ditulis sebagai:
-      </p>
+    <p class="mt-3">
+      Karena jumlah kuadrat residual kandidat 2 lebih kecil,
+      maka nilai tersebut lebih baik.
+    </p>
 
-      ${DM(String.raw`L_b + v = F(X_a)`)}
+    <p>
+      Jika ketelitian tiap pengamatan berbeda, digunakan bentuk berbobot:
+    </p>
 
-      <p>
-        Untuk model linear atau model yang telah dilinearisasi:
-      </p>
+    ${DM(String.raw`\Phi = v^T P v = \min`)}
 
-      ${DM(String.raw`v = A\hat{x} - l`)}
+    <div class="info-box">
+      <h5>Keterangan</h5>
+      <ul>
+        <li>${IM(String.raw`v`)} = vektor residual</li>
+        <li>${IM(String.raw`P`)} = matriks bobot</li>
+        <li>${IM(String.raw`\Phi`)} = fungsi objektif minimum</li>
+      </ul>
+    </div>
 
-      <div class="info-box">
-        <h5>Keterangan</h5>
-        <ul>
-          <li>${IM(String.raw`A`)} = matriks desain</li>
-          <li>${IM(String.raw`\hat{x}`)} = koreksi / parameter estimasi</li>
-          <li>${IM(String.raw`l`)} = vektor observasi tereduksi</li>
-          <li>${IM(String.raw`v`)} = residual</li>
-        </ul>
-      </div>
-    `
-  },
+    <div class="example-box mt-3">
+      Pengamatan GPS statik 2 jam tentu lebih teliti daripada pengukuran cepat 5 menit,
+      sehingga bobotnya lebih besar.
+    </div>
+
+    <div class="note-box mt-4">
+      Least Squares bukan mencari data sempurna,
+      tetapi mencari keputusan terbaik dari data yang tidak sempurna.
+    </div>
+  `
+},
+
+{
+  title: "Model Observasi",
+  content: `
+    <h2>3.2 Model Matematis Adjustment</h2>
+
+    <p>
+      Agar data pengukuran dapat dihitung secara sistematis,
+      observasi harus dinyatakan dalam model matematis.
+      Model ini menghubungkan <b>pengamatan</b> dengan
+      <b>parameter yang dicari</b>.
+    </p>
+
+    ${DM(String.raw`L_b + v = F(X_a)`)}
+
+    <p>
+      Artinya, observasi terukur setelah ditambah residual
+      harus sesuai dengan model fungsi parameter sebenarnya.
+    </p>
+
+    <div class="info-box">
+      <h5>Keterangan</h5>
+      <ul>
+        <li>${IM(String.raw`L_b`)} = vektor observasi</li>
+        <li>${IM(String.raw`v`)} = residual / koreksi observasi</li>
+        <li>${IM(String.raw`F(X_a)`)} = fungsi parameter</li>
+        <li>${IM(String.raw`X_a`)} = parameter yang dicari</li>
+      </ul>
+    </div>
+
+    <p>
+      Karena banyak model bersifat non-linear, maka dilakukan linearisasi
+      dengan deret Taylor sehingga menjadi:
+    </p>
+
+    ${DM(String.raw`v = A\hat{x} - l`)}
+
+    <div class="info-box">
+      <h5>Makna Simbol</h5>
+      <ul>
+        <li>${IM(String.raw`A`)} = matriks desain / koefisien</li>
+        <li>${IM(String.raw`\hat{x}`)} = koreksi parameter</li>
+        <li>${IM(String.raw`l`)} = misclosure / selisih observasi</li>
+        <li>${IM(String.raw`v`)} = residual akhir</li>
+      </ul>
+    </div>
+
+    <div class="quote-box">
+      <b>Filosofi Model Observasi:</b><br>
+      Alam diukur di lapangan, matematika menyusunnya di meja kerja.
+      Adjustment adalah jembatan antara realitas dan model.
+    </div>
+
+    <div class="example-box mt-3">
+      <b>Contoh Leveling:</b><br>
+      Diketahui beda tinggi hasil ukur:
+      ${IM(String.raw`\Delta h = 1.235\,m`)}
+
+      Model:
+      ${DM(String.raw`h_B - h_A = 1.235`)}
+
+      Jika terdapat beberapa jalur pengukuran yang tidak konsisten,
+      maka semua persamaan disusun ke dalam matriks dan diselesaikan
+      dengan Least Squares.
+    </div>
+
+    <div class="example-box mt-3">
+      <b>Contoh Garis Lurus:</b><br>
+      Titik hasil observasi:
+      (1,2), (2,2.9), (3,4.1)
+
+      Dicari garis terbaik:
+      ${DM(String.raw`y=a+bx`)}
+
+      Maka parameter ${IM(String.raw`a,b`)} dicari menggunakan model:
+      ${DM(String.raw`v = A\hat{x}-l`)}
+    </div>
+
+    <div class="note-box mt-4">
+      Semua adjustment jaringan geodesi pada dasarnya berasal dari konsep ini:
+      menyusun observasi menjadi persamaan, lalu mencari parameter terbaik.
+    </div>
+  `
+},
 
   {
     title: "Normal Equation",
