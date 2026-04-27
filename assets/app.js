@@ -119,43 +119,129 @@ const slides = [
   `
 },
 
-  {
-    title: "Jenis Kesalahan",
-    content: `
-      <h2>II. Teori Kesalahan</h2>
-      <h4>2.1 Jenis Kesalahan Pengukuran</h4>
+{
+  title: "Jenis Kesalahan",
+  content: `
+    <h2>II. Teori Kesalahan</h2>
+    <h4>2.1 Jenis Kesalahan Pengukuran</h4>
 
-      <div class="row g-3">
-        <div class="col-md-4">
-          <div class="info-box h-100">
-            <h5>Blunder</h5>
-            <p>Kesalahan kasar akibat salah baca, salah catat, atau salah target.</p>
-            <b>Contoh:</b> 25.124 m tertulis 52.124 m.
-          </div>
-        </div>
+    <p>
+      Dalam survei dan geodesi, tidak semua kesalahan diperlakukan sama.
+      Ada kesalahan yang <b>harus dihilangkan</b>, ada yang <b>dapat dikoreksi</b>,
+      dan ada yang <b>tidak dapat dihilangkan sepenuhnya</b> sehingga dianalisis
+      dengan statistik.
+    </p>
 
-        <div class="col-md-4">
-          <div class="info-box h-100">
-            <h5>Sistematis</h5>
-            <p>Kesalahan berpola dan dapat dikoreksi dengan model tertentu.</p>
-            <b>Contoh:</b> koreksi suhu, tekanan, konstanta prisma.
-          </div>
-        </div>
+    <div class="row g-3">
 
-        <div class="col-md-4">
-          <div class="info-box h-100">
-            <h5>Acak</h5>
-            <p>Kesalahan kecil tidak beraturan dan dianalisis secara statistik.</p>
-            <b>Contoh:</b> fluktuasi bacaan sudut beberapa detik.
-          </div>
+      <div class="col-md-4">
+        <div class="info-box h-100">
+          <h5>1. Blunder (Kesalahan Kasar)</h5>
+
+          <p>
+            Kesalahan besar akibat kelalaian manusia atau prosedur salah.
+            <b>Tidak disarankan masuk ke adjustment</b> karena merusak hasil.
+          </p>
+
+          <b>Contoh:</b><br>
+          25.124 m tertulis 52.124 m<br>
+          Salah target titik B menjadi titik C<br>
+          Salah input satuan cm menjadi m
+
+          <hr>
+
+          <b>Cara Mengetahui:</b>
+          <ul>
+            <li>Nilai jauh berbeda dari pengukuran lain</li>
+            <li>Tidak logis secara geometri</li>
+            <li>Misclosure sangat besar</li>
+            <li>Uji residual menunjukkan outlier</li>
+          </ul>
+
+          <b>Tindakan:</b><br>
+          Ulang ukur / hapus data salah.
         </div>
       </div>
 
-      <div class="note-box mt-4">
-        Adjustment dilakukan setelah blunder dieliminasi dan kesalahan sistematis dikoreksi.
+      <div class="col-md-4">
+        <div class="info-box h-100">
+          <h5>2. Sistematis</h5>
+
+          <p>
+            Kesalahan berpola, memiliki arah tertentu, dan
+            <b>bisa diperbaiki dengan model koreksi</b>.
+          </p>
+
+          <b>Contoh:</b><br>
+          Koreksi suhu pita ukur<br>
+          Koreksi tekanan atmosfer EDM<br>
+          Konstanta prisma total station<br>
+          Kolimasi alat
+
+          <hr>
+
+          <b>Cara Mengetahui:</b>
+          <ul>
+            <li>Terjadi berulang dengan pola sama</li>
+            <li>Selisih proporsional terhadap jarak</li>
+            <li>Diketahui dari kalibrasi alat</li>
+            <li>Sesuai teori fisik instrumen</li>
+          </ul>
+
+          <b>Tindakan:</b><br>
+          Terapkan koreksi sebelum adjustment.
+        </div>
       </div>
-    `
-  },
+
+      <div class="col-md-4">
+        <div class="info-box h-100">
+          <h5>3. Acak (Random Error)</h5>
+
+          <p>
+            Kesalahan kecil yang berubah-ubah tanpa pola tetap.
+            <b>Tidak bisa dihilangkan seluruhnya</b>,
+            tetapi dapat diperkecil dengan observasi berulang.
+          </p>
+
+          <b>Contoh:</b><br>
+          Fluktuasi bacaan sudut ±2″<br>
+          Getaran tripod kecil<br>
+          Ketelitian pembacaan operator
+
+          <hr>
+
+          <b>Cara Mengetahui:</b>
+          <ul>
+            <li>Nilai menyebar di sekitar rata-rata</li>
+            <li>Tidak memiliki pola tetap</li>
+            <li>Mengikuti distribusi normal</li>
+            <li>Dianalisis dengan standar deviasi</li>
+          </ul>
+
+          <b>Tindakan:</b><br>
+          Gunakan adjustment Least Squares.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="example-box mt-4">
+      <b>Contoh Praktik:</b><br>
+      Pengukuran jarak dilakukan 5 kali:
+      100.021, 100.022, 100.020, 100.021, 130.000 m
+      <br><br>
+      Nilai 130.000 m kemungkinan <b>blunder</b> karena jauh menyimpang.
+      Nilai lain adalah variasi <b>acak</b>.
+    </div>
+
+    <div class="note-box mt-4">
+      <b>Urutan yang benar sebelum Adjustment:</b><br>
+      1. Deteksi dan buang blunder<br>
+      2. Koreksi kesalahan sistematis<br>
+      3. Sesuaikan sisa error acak dengan metode perataan
+    </div>
+  `
+},
 
   {
     title: "Distribusi Error",
