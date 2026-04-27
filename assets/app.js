@@ -58,32 +58,70 @@ const slides = [
     `
   },
 
-  {
-    title: "Mengapa Adjustment?",
-    content: `
-      <h2>1.2 Mengapa Perlu Adjustment?</h2>
+{
+  title: "Mengapa Adjustment?",
+  content: `
+    <h2>1.2 Mengapa Perlu Adjustment?</h2>
 
-      <p>
-        Setiap pengukuran mengandung kesalahan. Karena itu, nilai observasi
-        tidak selalu sama dengan nilai sebenarnya.
-      </p>
+    <p>
+      Setiap pengukuran geodesi selalu mengandung kesalahan. Oleh karena itu,
+      nilai observasi tidak selalu sama dengan nilai sebenarnya. Secara matematis,
+      hubungan antara observasi, nilai benar, dan error ditulis sebagai:
+    </p>
 
-      ${DM(String.raw`l_i = x + e_i`)}
+    ${DM(String.raw`l_i = x + e_i`)}
 
-      <ul>
-        <li>${IM(String.raw`l_i`)} = observasi ke-i</li>
-        <li>${IM(String.raw`x`)} = nilai benar</li>
-        <li>${IM(String.raw`e_i`)} = error pengukuran</li>
-      </ul>
+    <ul>
+      <li>${IM(String.raw`l_i`)} = nilai observasi ke-i</li>
+      <li>${IM(String.raw`x`)} = nilai benar atau nilai paling mungkin</li>
+      <li>${IM(String.raw`e_i`)} = error pengukuran ke-i</li>
+    </ul>
 
-      <div class="example-box">
-        <b>Contoh:</b> jarak AB diukur 3 kali: 100.024 m, 100.019 m, dan 100.027 m.
-        Nilai berbeda karena adanya error acak.
-      </div>
+    <div class="example-box">
+      <b>Contoh Observasi Jarak AB:</b><br>
+      Jarak AB diukur sebanyak 3 kali dan menghasilkan:
+      <br><br>
+      ${IM(String.raw`l_1 = 100.024\\,m`)}<br>
+      ${IM(String.raw`l_2 = 100.019\\,m`)}<br>
+      ${IM(String.raw`l_3 = 100.027\\,m`)}
+      <br><br>
+      Karena ketiga hasil tidak sama, maka diperlukan adjustment untuk memperoleh
+      nilai paling mungkin dari jarak AB.
+    </div>
 
-      ${DM(String.raw`\bar{x}=\frac{100.024+100.019+100.027}{3}=100.0233\,m`)}
-    `
-  },
+    <p>
+      Untuk observasi dengan bobot sama, nilai paling mungkin dapat dihitung
+      menggunakan rata-rata aritmatik:
+    </p>
+
+    ${DM(String.raw`\bar{x} = \frac{l_1 + l_2 + l_3}{3}`)}
+
+    ${DM(String.raw`\bar{x} = \frac{100.024 + 100.019 + 100.027}{3}`)}
+
+    ${DM(String.raw`\bar{x} = 100.0233\\,m`)}
+
+    <p>
+      Selanjutnya, error atau residual tiap observasi dapat dihitung dari selisih
+      antara nilai observasi dan nilai rata-rata:
+    </p>
+
+    ${DM(String.raw`v_i = l_i - \bar{x}`)}
+
+    <ul>
+      <li>${IM(String.raw`v_1 = 100.024 - 100.0233 = +0.0007\\,m`)}</li>
+      <li>${IM(String.raw`v_2 = 100.019 - 100.0233 = -0.0043\\,m`)}</li>
+      <li>${IM(String.raw`v_3 = 100.027 - 100.0233 = +0.0037\\,m`)}</li>
+    </ul>
+
+    <div class="note-box">
+      <b>Interpretasi:</b><br>
+      Nilai ${IM(String.raw`100.0233\\,m`)} merupakan nilai paling mungkin untuk jarak AB.
+      Perbedaan kecil pada setiap pengukuran menunjukkan adanya error acak.
+      Adjustment digunakan untuk memperoleh estimasi terbaik dari data observasi
+      yang tidak sepenuhnya konsisten.
+    </div>
+  `
+},
 
   {
     title: "Jenis Kesalahan",
