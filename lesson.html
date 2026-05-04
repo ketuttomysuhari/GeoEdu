@@ -25,6 +25,7 @@
       }
     };
   </script>
+
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
@@ -59,6 +60,7 @@
   <section class="slide-stage">
     <div class="slide-card shadow-lg">
       <div class="slide-number" id="slideCounter">1 / 1</div>
+
       <div id="slideContent">
         <div class="loader-box">
           <div class="spinner-border text-info"></div>
@@ -83,20 +85,27 @@
 
 <script>
 const params = new URLSearchParams(window.location.search);
+
 const course = params.get("course") || "kkg";
-const meeting = params.get("meeting") || "8";
+const meeting = params.get("meeting") || "9";
 
 document.getElementById("backBtn").href = `course.html?course=${course}`;
 document.title = `GeoEdu | ${course.toUpperCase()} Pertemuan ${meeting}`;
+
+window.slides = [];
 
 const materialScript = document.createElement("script");
 materialScript.src = `data/meetings/${course}-${meeting}.js?v=${Date.now()}`;
 
 materialScript.onload = function () {
-  if (window.slides && Array.isArray(window.slides)) {
+  if (window.slides && Array.isArray(window.slides) && window.slides.length > 0) {
     initLesson();
   } else {
-    showLessonError("File materi terbaca, tetapi <b>window.slides</b> tidak ditemukan.");
+    showLessonError(`
+      File materi terbaca, tetapi <b>window.slides</b> kosong atau tidak ditemukan.<br>
+      Pastikan struktur file <code>${course}-${meeting}.js</code> seperti ini:<br>
+      <code>window.slides = [ ... ];</code>
+    `);
   }
 };
 
@@ -104,7 +113,8 @@ materialScript.onerror = function () {
   showLessonError(`
     Materi belum tersedia.<br>
     File yang dicari:<br>
-    <code>data/%20meetings/${course}-${meeting}.js</code>
+    <code>data/meetings/${course}-${meeting}.js</code><br><br>
+    Pastikan foldernya bernama <b>meetings</b>, bukan <b> meetings</b> dengan spasi.
   `);
 };
 
